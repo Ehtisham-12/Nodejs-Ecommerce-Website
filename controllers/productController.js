@@ -41,45 +41,47 @@ const getAllProducts = async (req, res) => {
   const product = await Products.find();
   res.render("index", {
     product,
-    title: 'Homepage' 
+    title: "Homepage",
   });
 };
 
 // Get All Products (For Product Page)
-const getAllProductsPage = async (req,res) => {
-  const {name, category, numericFilter} = req.query;
+const getAllProductsPage = async (req, res) => {
+  const { name, category, numericFilter } = req.query;
 
-  const queryObject ={};
+  const queryObject = {};
 
-  if(name) {
-    queryObject.name = { $regex: name, $options: 'i' };
+  if (name) {
+    queryObject.name = { $regex: name, $options: "i" };
   }
-  if(category) {
-    queryObject.category = category
+  if (category) {
+    queryObject.category = category;
   }
-  if(numericFilter) {
+  if (numericFilter) {
     const operatorMap = {
-      '>': '$gt',
-      '>=': '$gte',
-      '=': '$eq',
-      '<': "$lt",
-      '<=': "$lte"
-    } 
-    const regEx = /\b(<|>|>=|=)\b/g
-    let filter = numericFilter.replace(regEx, (match) => `-${operatorMap[match]}-`);
-    const options = ['price', 'rating']
-    filter = filter.split(',').forEach(item => {
-      const [field,operator,value] = item.split('-');
-      if(options.includes(field)) {
-        queryObject[field] = {[operator]:Number(value)};
+      ">": "$gt",
+      ">=": "$gte",
+      "=": "$eq",
+      "<": "$lt",
+      "<=": "$lte",
+    };
+    const regEx = /\b(<|>|>=|=)\b/g;
+    let filter = numericFilter.replace(
+      regEx,
+      (match) => `-${operatorMap[match]}-`
+    );
+    const options = ["price", "rating"];
+    filter = filter.split(",").forEach((item) => {
+      const [field, operator, value] = item.split("-");
+      if (options.includes(field)) {
+        queryObject[field] = { [operator]: Number(value) };
       }
     });
-
   }
   // console.log(queryObject);
   const product = await Products.find(queryObject);
-  res.render('product-page', {product})
-}
+  res.render("product-page", { product });
+};
 
 // Get All Products (For Admin)
 const getAllProductsAdmin = async (req, res) => {
@@ -100,7 +102,7 @@ const getSingleProduct = async (req, res) => {
   res.render("single-product", {
     product,
     images: product.images,
-    title: 'Product'
+    title: "Product",
   });
 };
 
@@ -113,7 +115,7 @@ const productReview = async (req, res) => {
     name: req.user.name,
     rating: Number(rating),
     comment,
-    orderId: orderItemId.valueOf()
+    orderId: orderItemId.valueOf(),
   };
 
   const product = await Products.findById({ _id: productId });
@@ -130,35 +132,38 @@ const productReview = async (req, res) => {
 
   await product.save({ validateBeforeSave: false });
 
-
-  const updateOrder = await Orders.findOneAndUpdate({_id:orderId}, {$set:{"orderItems.$[elem].productReviewed": 'Yes'}}, {arrayFilters: [{"elem.productId": `${productId}`}]});
+  const updateOrder = await Orders.findOneAndUpdate(
+    { _id: orderId },
+    { $set: { "orderItems.$[elem].productReviewed": "Yes" } },
+    { arrayFilters: [{ "elem.productId": `${productId}` }] }
+  );
   res.status(200).json({ product });
 };
 
 // Delete Product Review (Admin)
-const deleteProductReview = async (req,res) => {
-  const {reviewId} = req.body;
-  const {id} = req.params;
-  const product = await Products.findById({_id:id});
+const deleteProductReview = async (req, res) => {
+  const { reviewId } = req.body;
+  const { id } = req.params;
+  const product = await Products.findById({ _id: id });
 
-  let reviewIndex = product.reviews.findIndex(item => {
+  let reviewIndex = product.reviews.findIndex((item) => {
     return item._id.valueOf() === reviewId;
-  })
+  });
 
-   product.reviews.splice(reviewIndex, 1);
-   product.numOfReviews = product.reviews.length;
-   let avg = 0;
-   product.reviews.forEach((rev) => {
+  product.reviews.splice(reviewIndex, 1);
+  product.numOfReviews = product.reviews.length;
+  let avg = 0;
+  product.reviews.forEach((rev) => {
     avg += rev.rating;
   });
 
   product.rating = avg / product.reviews.length;
-  if(product.reviews.length === 0) {
-  product.rating = 0;
+  if (product.reviews.length === 0) {
+    product.rating = 0;
   }
   await product.save({ validateBeforeSave: false });
-  res.status(200).json({product});
-}
+  res.status(200).json({ product });
+};
 
 // Get Individual Product Review (Admin)
 const getSingleProductReview = async (req, res) => {
