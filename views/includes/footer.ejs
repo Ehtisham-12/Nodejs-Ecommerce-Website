@@ -1,29 +1,108 @@
-        <!-- footer -->
-        <div class="footer-container">
-            <div class="other-app">
-                <h3>DOWNLOAD OUR APP</h3>
-                <h2>Download App for Android and IOS mobile phone</h2>
-                <div class="footer-img-container">
+<!-- footer -->
+<div class="footer-container">
+  <div class="other-app">
+    <h3>DOWNLOAD OUR APP</h3>
+    <h2>Download App for Android and IOS mobile phone</h2>
+    <div class="footer-img-container">
+      <div class="android">
+        <img src="/assets/images/android-app.png" alt="" />
+      </div>
+      <div class="ios">
+        <img src="/assets/images/ios-app.png" alt="" />
+      </div>
+    </div>
+  </div>
 
-                    <div class="android">
-                        <img src="/assets/images/android-app.png" alt="">
-                    </div>
-                    <div class="ios">
-                        <img src="./img/ios-app.png" alt="">
-                    </div>
-                </div>
-            </div>
+  <div class="footer-center-content">
+    <h1>ECOMMERCE</h1>
+    <h4>High quality is our first priority</h4>
+    <p>Copyrights 2022 © Ehtisham</p>
+  </div>
 
-            <div class="footer-center-content">
-                <h1>ECOMMERCE</h1>
-                <h4>High quality is our first priority</h4>
-                <p>Copyrights 2022 © Ehtisham</p>
-            </div>
+  <div class="social-links">
+    <h2>Follow Us</h2>
+    <h3>Instagram</h3>
+    <h3>Youtube</h3>
+    <h3>Facebook</h3>
+  </div>
+</div>
 
-            <div class="social-links">
-                <h2>Follow Us</h2>
-                <h3>Instagram</h3>
-                <h3>Youtube</h3>
-                <h3>Facebook</h3>
-            </div>
-        </div>
+<!-- Script -->
+<script>
+  const hamburger = document.querySelector(".nav-hamburger");
+  const navList = document.querySelector(".nav-list-container");
+
+  hamburger.addEventListener("click", () => {
+    navList.classList.toggle("active");
+  });
+
+  const user = document.querySelector(".user-profile-nav");
+
+  user.addEventListener("mouseover", () => {
+    document.querySelector(".main-user-profile-nav").classList.add("active");
+  });
+  user.addEventListener("mouseout", () => {
+    document.querySelector(".main-user-profile-nav").classList.remove("active");
+  });
+
+  const userProfile = document.querySelector(".user-profile");
+  function homePageUser() {
+    let checkForToken = document.cookie.split(";");
+    let token = checkForToken.find((item) => {
+      if (item.includes("token")) {
+        return true;
+      }
+    });
+    if (token) {
+      userProfile.style.display = "block";
+      fetch("/homeUser", {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const adminOnly = document.querySelector(".admin-only");
+          const userProfileImg = document.querySelector(
+            ".user-profile-img img"
+          );
+
+          userProfileImg.src = data.user.picture;
+          if (data.user.role === "user") {
+            adminOnly.style.display = "none";
+          }
+          if (data.user.role === "admin") {
+            adminOnly.style.display = "block";
+          }
+        });
+
+      fetch("/total/delivered")
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.totalItems <= 0) {
+            notification.forEach((item) => {
+              item.style.display = "none";
+            });
+          }
+          if (result.totalItems > 0) {
+            notification.forEach((item) => {
+              item.style.display = "block";
+              item.querySelector("p").textContent = result.totalItems;
+            });
+          }
+        });
+    } else {
+      userProfile.style.display = "none";
+    }
+  }
+  homePageUser();
+
+  // Delivery Notification
+  const notification = document.querySelectorAll(".notification-number");
+  const totalNotification = document.querySelectorAll(".notification-number p");
+
+//   notification.forEach((item) => {
+//     item.style.display = "none";
+//   });
+</script>
