@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Ecommerce</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Nav Bar -->
+        <div class="nav-container">
+
+            <div class="nav-hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <nav class="nav-list-container">
+
+                <h2>Ecommerce</h2>
+
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="">Products</a></li>
+                    <li><a href="">Contacts</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+
+                <div class="other-menu">
+
+                    <div class="search-bar">
+                        <a href=""><i class="fa-solid fa-magnifying-glass fa-2x"></i></a>
+                    </div>
+
+                    <div class="cart-item">
+                        <a href="/cart"><i class="fa-solid fa-cart-shopping fa-2x"></i></i></a>
+                    </div>
+
+                    <div class="user-bar">
+                        <a href="/login"><i class="fa-solid fa-user fa-2x"></i></a>
+                    </div>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+
+        <!-- Profile -->
+        <div class="user-profile">
+            <div class="main-user-profile-nav">
+                <div class="user-profile-nav">
+
+                    <div class="user-profile-img">
+                        <img alt="">
+                        <div class="notification-number">
+                            <p></p>
+                        </div>
+                    </div>
+
+                    <div class="user-profile-nav-list">
+
+                        <div class="nav-hover-wrapper admin-only">
+                            <span>Dashboard</span>
+                            <div class="dashboard-nav">
+                                <a href="/admin/dashboard"><i class="fa-brands fa-discord"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Orders</span>
+                            <div class="order-nav">
+                                <a href="/orders"><i class="fa-sharp fa-solid fa-bag-shopping"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Profile</span>
+                            <div class="profile-nav">
+                                <a href="/user"><i class="fa-solid fa-user"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Cart</span>
+                            <div class="cart-nav">
+                                <a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Reviews</span>
+                            <div class="review-nav">
+                                <a href="/order/review"><i class="fa-solid fa-envelope"></i></a>
+                            </div>
+                            <div class="notification-number">
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class="nav-hover-wrapper">
+                            <span>Logout</span>
+                            <div class="logout-nav">
+                                <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Section -->
+        <div class="product-container new-product-container">
+
+            <div class="featured-product">
+                <h2>Products</h2>
+            </div>
+
+            <div class="product-main-container new-product-page">
+                <div class="product-filter-side-bar">
+                    <form action="" class="price-filter-form">
+                        <label for="price-filter">Price</label>
+                        <div class="range-value">
+                            <span class="min-val">5000</span>
+                            <span class="max-val">1000</span>
+                        </div>
+                        <div class="price-filter-input-wrapper">
+                            <div class="range-tracker"></div>
+                            <input type="range" min="500" max="5000" value="500" id="price-range-slider-1" oninput="slideOne()">
+                            <input type="range" min="500" max="5000" value="1000" id="price-range-slider-2" oninput="slideTwo()">
+                        </div>
+                    </form>
+                    <form action="" class="category-filter">
+                        <label for="category-filter">Category</label>
+                        <button>Laptop</button>
+                        <button>Footwear</button>
+                        <button>Bottom</button>
+                        <button>Top</button>
+                        <button>Camera</button>
+                        <button>Mobile</button>
+                    </form>
+                    <form action="" class="rating-filter">
+                        <label for="rating-filter">Rating Above</label>
+                        <div class="rating-filter-range-slider">
+                            <input type="range" min="1" max="5" value="0">
+                        </div>
+                    </form>
+                </div>
+                <div class="products-container">
+                    <% product.forEach(item=> { %>
+                        <div class="product-card" data-id="<%= item._id %>">
+    
+                            <div class="product-img">
+                                <img src="<%=item.images[0].url%>" alt="">
+                            </div>
+    
+                            <div class="product-title">
+                                <h4>
+                                    <%=item.name%>
+                                </h4>
+                            </div>
+    
+                            <div class="product-stars">
+                                <span class="start customer-star-div" data-id="<%=item.rating%>">
+                                    <i class="fa-solid fa-star" data-id="1"></i>
+                                    <i class="fa-solid fa-star" data-id="2"></i>
+                                    <i class="fa-solid fa-star" data-id="3"></i>
+                                    <i class="fa-solid fa-star" data-id="4"></i>
+                                    <i class="fa-solid fa-star" data-id="5"></i>
+    
+                                </span>
+                                <span class="review-count">
+                                    (<%=item.numOfReviews%> Reviews)
+                                </span>
+                            </div>
+                            <div class="product-price">
+                                <h3>$<%=item.price%>
+                                </h3>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- footer -->
+        <div class="footer-container">
+            <div class="other-app">
+                <h3>DOWNLOAD OUR APP</h3>
+                <h2>Download App for Android and IOS mobile phone</h2>
+                <div class="footer-img-container">
+
+                    <div class="android">
+                        <img src="/assets/images/android-app.png" alt="">
+                    </div>
+                    <div class="ios">
+                        <img src="./img/ios-app.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-center-content">
+                <h1>ECOMMERCE</h1>
+                <h4>High quality is our first priority</h4>
+                <p>Copyrights 2022 © Ehtisham</p>
+            </div>
+
+            <div class="social-links">
+                <h2>Follow Us</h2>
+                <h3>Instagram</h3>
+                <h3>Youtube</h3>
+                <h3>Facebook</h3>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        const hamburger = document.querySelector('.nav-hamburger');
+        const navList = document.querySelector('.nav-list-container');
+
+        hamburger.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        })
+
+        const user = document.querySelector('.user-profile-nav');
+
+        user.addEventListener('mouseover', () => {
+            document.querySelector('.main-user-profile-nav').classList.add('active');
+        })
+        user.addEventListener('mouseout', () => {
+            document.querySelector('.main-user-profile-nav').classList.remove('active');
+        })
+
+
+        const userProfile = document.querySelector('.user-profile');
+        function homePageUser() {
+            if (document.cookie) {
+                userProfile.style.display = 'block';
+                fetch('/homeUser', {
+                    method: 'get',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        const adminOnly = document.querySelector('.admin-only');
+                        const userProfileImg = document.querySelector('.user-profile-img img');
+
+                        userProfileImg.src = data.user.picture;
+                        if (data.user.role === 'user') {
+                            adminOnly.style.display = 'none';
+                        }
+                        if (data.user.role === 'admin') {
+                            adminOnly.style.display = 'block';
+                        }
+                    })
+
+                fetch('/total/delivered')
+                    .then(res => res.json())
+                    .then(result => {
+                        if (result.totalItems <= 0) {
+                            notification.forEach(item => {
+                                item.style.display = 'none';
+                            })
+                        }
+                        if (result.totalItems > 0) {
+                            notification.forEach(item => {
+                                item.style.display = 'block';
+                                item.querySelector('p').textContent = result.totalItems;
+                            })
+                        }
+
+                    })
+            } else {
+                userProfile.style.display = 'none';
+            }
+        }
+        homePageUser();
+
+        // Delivery Notification 
+        const notification = document.querySelectorAll('.notification-number');
+        const totalNotification = document.querySelectorAll('.notification-number p');
+
+        // notification.forEach(item => {
+        //     item.style.display = 'none';
+        // })
+
+
+        const productCard = document.querySelectorAll('.product-card');
+
+        productCard.forEach(item => {
+            item.addEventListener('click', () => {
+                let productId = item.getAttribute('data-id');
+                window.location = `/product/${productId}`;
+
+            })
+        })
+
+
+        // Show product Overall rating
+
+        let avgStar = document.querySelectorAll('.customer-star-div');
+
+        avgStar.forEach(item => {
+            let itemStar = item.querySelectorAll('i');
+            itemStar.forEach(star => {
+                if (star.dataset.id <= item.dataset.id) {
+                    star.style.color = 'orange';
+                }
+            })
+        });
+
+        // Range Slider Script
+        window.onload = function(){
+    slideOne();
+    slideTwo();
+}
+
+let sliderOne = document.getElementById("price-range-slider-1");
+let sliderTwo = document.getElementById("price-range-slider-2");
+// let displayValOne = document.getElementById("range1");
+// let displayValTwo = document.getElementById("range2");
+let minGap = 500;
+let sliderTrack = document.querySelector(".slider-track");
+// let sliderMaxValue = document.getElementById("slider-1").max;
+
+function slideOne(){
+    if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap){
+        sliderOne.value = parseInt(sliderTwo.value) - minGap;
+    }
+    document.querySelector('.range-value').style.display = 'block'
+    document.querySelector('.min-val').textContent = sliderOne.value 
+    // displayValOne.textContent = sliderOne.value;
+    // fillColor();
+}
+function slideTwo(){
+    if(parseInt(sliderTwo.value) - parseInt(sliderOne.value) <= minGap){
+        sliderTwo.value = parseInt(sliderOne.value) + minGap;
+    }
+    document.querySelector('.max-val').textContent = sliderTwo.value 
+
+    // displayValTwo.textContent = sliderTwo.value;
+    // fillColor();
+}
+// function fillColor(){
+//     percent1 = (sliderOne.value / sliderMaxValue) * 100;
+//     percent2 = (sliderTwo.value / sliderMaxValue) * 100;
+//     sliderTrack.style.background = `linear-gradient(to right, #dadae5 ${percent1}% , #3264fe ${percent1}% , #3264fe ${percent2}%, #dadae5 ${percent2}%)`;
+// }
+
+// Filter Item According To Its Category
+const categoryForm = document.querySelector('.category-filter');
+const categoryBtn = document.querySelectorAll('.category-filter button');
+
+categoryForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+})
+categoryBtn.forEach(item => {
+    item.addEventListener('click', (e)=> {
+        window.location = `/products?category=${e.currentTarget.textContent}`
+    })
+})
+
+    </script>
+</body>
+
+</html>

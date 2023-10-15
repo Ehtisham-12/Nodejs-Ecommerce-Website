@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Ecommerce</title>
+</head>
+
+<body style="background-color: rgb(237, 234, 234);">
+    <div class="container login">
+        <!-- Nav Bar -->
+        <div class="nav-container">
+
+            <div class="nav-hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <nav class="nav-list-container">
+
+                <h2>Ecommerce</h2>
+
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="./index.html">Products</a></li>
+                    <li><a href="./index.html">Contacts</a></li>
+                    <li><a href="./index.html">About</a></li>
+                </ul>
+
+                <div class="other-menu">
+
+                    <div class="search-bar">
+                        <a href=""><i class="fa-solid fa-magnifying-glass fa-2x"></i></a>
+                    </div>
+
+                    <div class="cart-item">
+                        <a href=""><i class="fa-solid fa-cart-shopping fa-2x"></i></i></a>
+                    </div>
+
+                    <div class="user-bar">
+                        <a href="/login"><i class="fa-solid fa-user fa-2x"></i></a>
+                    </div>
+
+                </div>
+
+            </nav>
+
+            <!-- Login/Register -->
+            <div class="login-register-container">
+                <form action="" id="login-n-register-form">
+                    <div class="reg-n-login-btn">
+                        <label for="login" class="login-btn">Login</label>
+                        <label for="register" class="register-btn">Register</label>
+                    </div>
+                    <input type="text" placeholder="Name" name="name" class="name-input">
+                    <input type="email" placeholder="Email" name="email" class="email-input">
+                    <input type="password" placeholder="Password" name="password" class="password-input">
+                    <p class="forget-password">Forget Password?</p>
+                    <div class="register-img-div image-input">
+                        <div class="register-img-div">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Blank_woman_placeholder.svg/315px-Blank_woman_placeholder.svg.png" alt=""  class="register-img">
+                        </div>
+                        <label for="img-file" >Choose Image</label>
+                    </div>
+                    <input type="file" accept="image/*"  name="picture" id="img-file" onchange="loadFile(event)">
+                    <button type="submit" class="form-submit-btn">Login</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <script>
+
+        function checkLogin() {
+            if(document.cookie.includes('token')) {
+                fetch('/homeUser')
+                .then(res=>res.json())
+                .then(result => {
+                    if(result.user.role === 'user') {
+                        window.location = '/user'
+                    }
+                    if(result.user.role === 'admin') {
+                        window.location = '/admin'
+                    }
+                })
+            }
+
+        }
+
+        checkLogin();
+        const hamburger = document.querySelector('.nav-hamburger');
+        const navList = document.querySelector('.nav-list-container');
+
+        hamburger.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        })
+
+
+        const loginBtn = document.querySelector('.login-btn');
+        const registerBtn = document.querySelector('.register-btn');
+        const nameInput = document.querySelector('.name-input');
+        const imageInput = document.querySelector('.image-input');
+        const submitBtn = document.querySelector('.form-submit-btn');
+        const forgetPassword = document.querySelector('.forget-password')
+
+        registerBtn.addEventListener('click', () => {
+            loginBtn.style.borderBottom = 'none'
+            registerBtn.style.borderBottom = ' 3px solid #ff6347'
+            nameInput.style.display = 'block';
+            imageInput.style.display = 'flex';
+            submitBtn.textContent = 'Register'
+            forgetPassword.style.display = 'none';
+        })
+
+        loginBtn.addEventListener('click', () => {
+            loginBtn.style.borderBottom = '3px solid #ff6347'
+            registerBtn.style.borderBottom = 'none';
+            nameInput.style.display = 'none';
+            imageInput.style.display = 'none';
+            submitBtn.textContent = 'Login';
+            forgetPassword.style.display = 'block';
+        })
+        function loadFile(event) {
+            const registerImg = document.querySelector('.register-img');
+            registerImg.src = URL.createObjectURL(event.target.files[0]);
+        }
+
+        const form = document.querySelector('#login-n-register-form');
+        const emailInput = document.querySelector('.email-input');
+        const passwordInput = document.querySelector('.password-input');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (submitBtn.textContent === 'Login') {
+
+                fetch('/login', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        email: emailInput.value,
+                        password: passwordInput.value
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.success) {
+                            window.location = '/user';
+                            // if(data.user.role === 'user'){
+
+                                
+                            // }
+                            // if(data.user.role === 'admin') {
+                            //     window.location = '/admin';
+                            // } 
+                            
+                        }
+                        else {
+                            console.log(data);
+                        }
+                    })
+            }
+            if (submitBtn.textContent === 'Register') {
+                const nameInput = document.querySelector('.name-input').value;
+                const emailInput = document.querySelector('.email-input').value;
+                const passwordInput = document.querySelector('.password-input').value;
+                const imageInput = document.querySelector('#img-file').files[0];
+
+                const formData = new FormData;
+                formData.append('name', nameInput);
+                formData.append('email', emailInput);
+                formData.append('password', passwordInput);
+                formData.append('picture', imageInput);
+
+                fetch('/register', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then((res) => res.json())
+                .then((data)=>{
+                    console.log(data);
+                })
+            }
+
+        })
+    </script>
+</body>
+
+</html>

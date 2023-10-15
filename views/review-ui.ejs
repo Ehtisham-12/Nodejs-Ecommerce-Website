@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/assets/style.css">
+    <title>Reviews</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Nav Bar -->
+        <div class="nav-container">
+
+            <div class="nav-hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <nav class="nav-list-container">
+
+                <h2>Ecommerce</h2>
+
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="">Products</a></li>
+                    <li><a href="">Contacts</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+
+                <div class="other-menu">
+
+                    <div class="search-bar">
+                        <a href=""><i class="fa-solid fa-magnifying-glass fa-2x"></i></a>
+                    </div>
+
+                    <div class="cart-item">
+                        <a href="/cart"><i class="fa-solid fa-cart-shopping fa-2x"></i></i></a>
+                    </div>
+
+                    <div class="user-bar">
+                        <a href="/login"><i class="fa-solid fa-user fa-2x"></i></a>
+                    </div>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+
+        <!-- Profile -->
+        <div class="user-profile">
+            <div class="main-user-profile-nav">
+                <div class="user-profile-nav">
+
+                    <div class="user-profile-img">
+                        <img alt="">
+                    </div>
+
+                    <div class="user-profile-nav-list">
+
+                        <div class="nav-hover-wrapper admin-only">
+                            <span>Dashboard</span>
+                            <div class="dashboard-nav">
+                                <a href="/admin/dashboard"><i class="fa-brands fa-discord"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Orders</span>
+                            <div class="order-nav">
+                                <a href="/orders"><i class="fa-sharp fa-solid fa-bag-shopping"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Profile</span>
+                            <div class="profile-nav">
+                                <a href="/user"><i class="fa-solid fa-user"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Cart</span>
+                            <div class="cart-nav">
+                                <a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Reviews</span>
+                            <div class="review-nav">
+                                <a href=""><i class="fa-solid fa-envelope"></i></a>
+                            </div>
+                        </div>
+                        <div class="nav-hover-wrapper">
+                            <span>Logout</span>
+                            <div class="logout-nav">
+                                <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Section -->
+        <div class="review-page">
+            <div class="review-page-main-btn">
+                <button class="to-be-reviewed">To Be Reviewed</button>
+                <button class="review-history">History</button>
+            </div>
+
+            <div class="to-be-reviewed-section">
+                <div class="submit-review-pop-up">
+                    <form>
+                        <h2>Submit Review</h2>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star" data-id="1"></i>
+                            <i class="fa-solid fa-star" data-id="2"></i>
+                            <i class="fa-solid fa-star" data-id="3"></i>
+                            <i class="fa-solid fa-star" data-id="4"></i>
+                            <i class="fa-solid fa-star" data-id="5"></i>
+                        </div>
+                        <textarea name="comment" id="review-comment" cols="30" rows="10"></textarea>
+                        <div class="review-submit-btn">
+                            <button class="review-cancel">Cancel</button>
+                            <button class="review-submit" id="submit-review">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <% filterForReview.forEach(item=> { %>
+                    <% item.orderItems.forEach(item1=> { %>
+                        <div class="product-to-be-reviewed">
+                            <div class="product-to-be-reviewed-img">
+                                <img src="<%=item1.image%>" alt="">
+                            </div>
+                            <div class="right-section">
+                                <div class="name">
+                                    <h4>
+                                        <%=item1.name%>
+                                    </h4>
+                                </div>
+                                <div class="delivery-status">
+                                    <p>Status: <span>Delivered</span></p>
+                                </div>
+                                <div class="button-for-submit-review">
+                                    <button data-id="<%=item1.productId %>" data-order="<%= item._doc._id %>"
+                                        data-item="<%=item1._id %>">Review</button>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                            <% }) %>
+
+
+            </div>
+
+            <div class="review-history-section">
+
+            </div>
+        </div>
+
+
+        <!-- footer -->
+        <div class="footer-container">
+            <div class="other-app">
+                <h3>DOWNLOAD OUR APP</h3>
+                <h2>Download App for Android and IOS mobile phone</h2>
+                <div class="footer-img-container">
+
+                    <div class="android">
+                        <img src="/img//android-app.png" alt="">
+                    </div>
+                    <div class="ios">
+                        <img src="/img/ios-app.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-center-content">
+                <h1>ECOMMERCE</h1>
+                <h4>High quality is our first priority</h4>
+                <p>Copyrights 2022 © Ehtisham</p>
+            </div>
+
+            <div class="social-links">
+                <h2>Follow Us</h2>
+                <h3>Instagram</h3>
+                <h3>Youtube</h3>
+                <h3>Facebook</h3>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        const hamburger = document.querySelector('.nav-hamburger');
+        const navList = document.querySelector('.nav-list-container');
+
+        hamburger.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        })
+
+        const user = document.querySelector('.user-profile-nav');
+
+        user.addEventListener('mouseover', () => {
+            document.querySelector('.main-user-profile-nav').classList.add('active');
+        })
+        user.addEventListener('mouseout', () => {
+            document.querySelector('.main-user-profile-nav').classList.remove('active');
+        })
+
+
+        const userProfile = document.querySelector('.user-profile');
+        function homePageUser() {
+            if (document.cookie) {
+                userProfile.style.display = 'block';
+                fetch('/homeUser', {
+                    method: 'get',
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        const adminOnly = document.querySelector('.admin-only');
+                        const userProfileImg = document.querySelector('.user-profile-img img');
+
+                        userProfileImg.src = data.user.picture;
+                        if (data.user.role === 'user') {
+                            adminOnly.style.display = 'none';
+                        }
+                        if (data.user.role === 'admin') {
+                            adminOnly.style.display = 'block';
+                        }
+                    })
+            } else {
+                userProfile.style.display = 'none';
+            }
+        }
+        homePageUser();
+
+        //    User Product Review and history
+        const tobeReviewedBtn = document.querySelector('.to-be-reviewed');
+        const reviewedHistoryBtn = document.querySelector('.review-history');
+
+        const tobeReviewedSection = document.querySelector('.to-be-reviewed-section');
+        const reviewedHistorySection = document.querySelector('.review-history-section');
+
+        reviewedHistoryBtn.addEventListener('click', () => {
+            fetch('/order/reviewed')
+                .then(res => res.json())
+                .then(result => {
+                    let data = result.data;
+                    let dataList = data.map(item => {
+                        let { obj, orderItems } = item;
+                        return `
+                    <div class="review-history-section-detail">
+                    <div class="product-to-be-reviewed">
+                        <div class="product-to-be-reviewed-img">
+                            <img src="${orderItems.image}" alt="">
+                        </div>
+                        <div class="right-section">
+                            <div class="name">
+                                <h4>${orderItems.name}</h4>
+                            </div>
+                            <div class="review-star-n-rating-history">
+                                <div class="review-star-section">
+                                    <span class="start customer-star-div" data-id="${obj.rating}">
+                                        <i class="fa-solid fa-star" data-id="1"></i>
+                                        <i class="fa-solid fa-star" data-id="2"></i>
+                                        <i class="fa-solid fa-star" data-id="3"></i>
+                                        <i class="fa-solid fa-star" data-id="4"></i>
+                                        <i class="fa-solid fa-star" data-id="5"></i>
+                                    </span>
+                                    <span class="rating">${obj.rating}</span>
+                                </div>
+                            </div>
+                            <div class="review-comment-section-history">
+                                <p>${obj.comment}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    `
+                    })
+                    const reviewHistorySectionDOM = document.querySelector('.review-history-section');
+                    reviewHistorySectionDOM.innerHTML = dataList.toString().replaceAll(',', ' ')
+                    let avgStar = document.querySelectorAll('.customer-star-div');
+
+                    avgStar.forEach(item => {
+                        let itemStar = item.querySelectorAll('i');
+                        itemStar.forEach(star => {
+                            if (star.dataset.id <= item.dataset.id) {
+                                star.style.color = 'orange';
+                            }
+                        })
+                    });
+
+                })
+
+
+            tobeReviewedSection.style.display = 'none';
+            reviewedHistorySection.style.display = 'block';
+            reviewedHistoryBtn.style.backgroundColor = '#ff6347';
+            reviewedHistoryBtn.style.color = 'white';
+            tobeReviewedBtn.style.backgroundColor = 'white';
+            tobeReviewedBtn.style.color = 'black';
+        })
+
+        tobeReviewedBtn.addEventListener('click', () => {
+            tobeReviewedSection.style.display = 'block';
+            reviewedHistorySection.style.display = 'none';
+            reviewedHistoryBtn.style.backgroundColor = 'white';
+            reviewedHistoryBtn.style.color = 'black';
+            tobeReviewedBtn.style.backgroundColor = '#ff6347';
+            tobeReviewedBtn.style.color = 'white';
+        })
+
+        // Review Pop Up Section
+        const singleProductReviewBtn = document.querySelectorAll('.button-for-submit-review button');
+        singleProductReviewBtn.forEach(item => {
+            item.addEventListener('click', () => {
+                const reviewPopUp = document.querySelector('.submit-review-pop-up');
+                reviewPopUp.style.display = 'block';
+            })
+        })
+
+        const reviewCancelBtn = document.querySelector('.review-cancel');
+
+        reviewCancelBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const reviewPopUp = document.querySelector('.submit-review-pop-up');
+            reviewPopUp.style.display = 'none';
+        })
+
+        const reviewStar = document.querySelectorAll('.review-stars i');
+
+        reviewStar.forEach(item => {
+            item.addEventListener('mouseover', () => {
+                getStar(item, reviewStar);
+            })
+            item.addEventListener('click', () => {
+                addStar(item, reviewStar);
+
+                item.removeEventListener('mouseout', offStar)
+            })
+
+            item.addEventListener('mouseout', offStar);
+        })
+
+        function getStar(itm, rev) {
+            let dataAttr = itm.getAttribute('data-id');
+            for (let i = 0; i <= Number(dataAttr) - 1; i++) {
+                rev[i].classList.add('orange-star');
+            }
+        }
+
+        function addStar(itm, rev) {
+            let dataAttr = itm.getAttribute('data-id');
+            let dataAttrNum = Number(dataAttr);
+
+            rev.forEach(item => {
+                if (Number(item.dataset.id) > Number(itm.dataset.id)) {
+                    item.classList.remove('orange-star');
+                }
+
+                else {
+                    item.classList.add('orange-star');
+                }
+
+            })
+
+        }
+
+        function offStar() {
+
+            reviewStar.forEach(item => {
+                item.classList.remove('orange-star');
+            })
+        }
+
+        // Write Review
+        const submitReview = document.querySelector('#submit-review');
+        const reviewComment = document.querySelector('#review-comment');
+        let num = 0;
+        reviewStar.forEach((item) => {
+            item.addEventListener('click', () => {
+                num = Number(item.getAttribute('data-id'));
+            })
+        })
+
+        let productId = document.querySelectorAll('.button-for-submit-review button');
+        let id;
+        let orderId;
+        let orderItemId;
+
+        // For Product Id Field
+        productId.forEach(item => {
+            item.addEventListener('click', () => {
+                id = item.dataset.id;
+                orderId = item.dataset.order;
+                orderItemId = item.dataset.item
+            })
+        })
+
+        // Submit Review
+        submitReview.addEventListener('click', (e) => {
+            e.preventDefault();
+            fetch('/create-reviews', {
+                method: 'put',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    rating: num,
+                    comment: reviewComment.value,
+                    productId: id,
+                    orderId: orderId,
+                    orderItemId: orderItemId
+                })
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    window.location = `/order/review`;
+                })
+        })
+
+
+
+    </script>
+</body>
+
+</html>

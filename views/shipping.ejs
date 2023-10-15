@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Product</title>
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+            <!-- Nav Bar -->
+            <div class="nav-container">
+
+                <div class="nav-hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <nav class="nav-list-container">
+
+                    <h2>Ecommerce</h2>
+
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="">Products</a></li>
+                        <li><a href="">Contacts</a></li>
+                        <li><a href="">About</a></li>
+                    </ul>
+
+                    <div class="other-menu">
+
+                        <div class="search-bar">
+                            <a href=""><i class="fa-solid fa-magnifying-glass fa-2x"></i></a>
+                        </div>
+
+                        <div class="cart-item">
+                            <a href=""><i class="fa-solid fa-cart-shopping fa-2x"></i></i></a>
+                        </div>
+
+                        <div class="user-bar">
+                            <a href="/login"><i class="fa-solid fa-user fa-2x"></i></a>
+                        </div>
+
+                    </div>
+
+                </nav>
+
+            </div>
+
+
+            <!-- Profile -->
+            <div class="user-profile">
+                <div class="main-user-profile-nav">
+                    <div class="user-profile-nav">
+
+                        <div class="user-profile-img">
+                            <img alt="">
+                        </div>
+
+                        <div class="user-profile-nav-list">
+
+                            <div class="nav-hover-wrapper admin-only">
+                                <span>Dashboard</span>
+                                <div class="dashboard-nav">
+                                    <a href="/admin/dashboard"><i class="fa-brands fa-discord"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Orders</span>
+                                <div class="order-nav">
+                                    <a href=""><i class="fa-sharp fa-solid fa-bag-shopping"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Profile</span>
+                                <div class="profile-nav">
+                                    <a href="/user"><i class="fa-solid fa-user"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Cart</span>
+                                <div class="cart-nav">
+                                    <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Logout</span>
+                                <div class="logout-nav">
+                                    <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Shipping Page -->
+            <div class="shipping-page">
+
+                <div class="page-pointer-section">
+                    <div class="shipping-detail-pointer">
+                        <div class="shipping-icon">
+                            <i class="fa-solid fa-truck" style="color:rgb(247, 88, 88);"></i>
+                            <div class="horizental-line">
+
+                            </div>
+                        </div>
+                        <p>Shipping Details</p>
+
+                    </div>
+                    <div class="confirm-order-pointer">
+                        <div class="confirm-order-icon">
+                            <i class="fa-solid fa-square-check"></i>
+                            <div class="horizental-line">
+
+                            </div>
+                        </div>
+                        <p>Confirm Order</p>
+                    </div>
+                    <div class="payment-pointer">
+                        <div class="payment-icon">
+                            <i class="fa-solid fa-house"></i>
+                        </div>
+                        <p>Payment</p>
+                    </div>
+                </div>
+
+                <div class="shipping-page-title">
+                    <h2>Shipping Details</h2>
+                </div>
+
+                <div class="shipping-page-form">
+                    <form action="">
+                        <input type="text" name="address" placeholder="Address" id="address">
+                        <input type="text" name="city" placeholder="City" id="city">
+                        <input type="number" name="postalCode" placeholder="Postal Code" id="postal-code">
+                        <input type="number" name="phone" placeholder="Phone" id="phone-no">
+                        <select name="country" id="all-countries" onchange="getState(value)">
+                            <option value="" selected="selected">Country</option>
+                        </select>
+                        <select name="state" id="country-states">
+                            <option value="">State</option>
+                        </select>
+                        <button class="shipping-confirm-btn">Continue</button>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+            <!-- footer -->
+            <div class="footer-container">
+                <div class="other-app">
+                    <h3>DOWNLOAD OUR APP</h3>
+                    <h2>Download App for Android and IOS mobile phone</h2>
+                    <div class="footer-img-container">
+
+                        <div class="android">
+                            <img src="/img//android-app.png" alt="">
+                        </div>
+                        <div class="ios">
+                            <img src="/img/ios-app.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-center-content">
+                    <h1>ECOMMERCE</h1>
+                    <h4>High quality is our first priority</h4>
+                    <p>Copyrights 2022 © Ehtisham</p>
+                </div>
+
+                <div class="social-links">
+                    <h2>Follow Us</h2>
+                    <h3>Instagram</h3>
+                    <h3>Youtube</h3>
+                    <h3>Facebook</h3>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+
+            fetch('https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/countries%2Bstates.json')
+                .then(res => res.json())
+                .then(result => {
+                    let rest = result.map(item => {
+                        return `
+                    <option value="${item.name}" >${item.name}</option>
+                    `
+                    })
+                    let data = rest.toString().replaceAll(',', '');
+                    let countryDOM = document.querySelector('#all-countries');
+                    countryDOM.innerHTML = `<option value="" selected="selected">Select Country</option>${data}`;
+                })
+
+            function getState(country) {
+                fetch('https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/countries%2Bstates.json')
+                    .then(res => res.json())
+                    .then(result => {
+                        let output = result.filter(item => {
+                            return item.name === country;
+                        })
+                        let allState = output[0].states;
+
+                        let states = allState.map(item => {
+                            return `
+                        <option value="${item.name}">${item.name}</option>
+                        `
+                        })
+                        let stateDOM = document.querySelector('#country-states');
+                        stateDOM.style.display = 'block';
+                        stateDOM.innerHTML = `<option value="" selected="selected">Select State</option> ${states.toString().replaceAll(',', ' ')}`;
+                    })
+            }
+
+
+            const hamburger = document.querySelector('.nav-hamburger');
+            const navList = document.querySelector('.nav-list-container');
+
+            hamburger.addEventListener('click', () => {
+                navList.classList.toggle('active');
+            })
+
+            const user = document.querySelector('.user-profile-nav');
+
+            user.addEventListener('mouseover', () => {
+                document.querySelector('.main-user-profile-nav').classList.add('active');
+            })
+            user.addEventListener('mouseout', () => {
+                document.querySelector('.main-user-profile-nav').classList.remove('active');
+            })
+
+
+            const userProfile = document.querySelector('.user-profile');
+            function homePageUser() {
+                let checkForToken = document.cookie.split(';');
+                let token = checkForToken.find(item => {
+                    if (item.includes('token')) {
+                        return true;
+                    }
+                })
+                if (token) {
+                    userProfile.style.display = 'block';
+                    fetch('/homeUser', {
+                        method: 'get',
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                    })
+                        .then((res) => res.json())
+                        .then((data) => {
+                            const adminOnly = document.querySelector('.admin-only');
+                            const userProfileImg = document.querySelector('.user-profile-img img');
+
+                            userProfileImg.src = data.user.picture;
+                            if (data.user.role === 'user') {
+                                adminOnly.style.display = 'none';
+                            }
+                            if (data.user.role === 'admin') {
+                                adminOnly.style.display = 'block';
+                            }
+                        })
+                } else {
+                    userProfile.style.display = 'none';
+                }
+            }
+            homePageUser();
+
+            // Sending cookies to confirm order page
+            const shippingConfirmBtn = document.querySelector('.shipping-confirm-btn');
+
+            shippingConfirmBtn.addEventListener('click', (e)=>{
+                e.preventDefault();
+                const address = document.querySelector('#address').value;
+                const city = document.querySelector('#city').value;
+                const postalCode = document.querySelector('#postal-code').value;
+                const phone = document.querySelector('#phone-no').value;
+                const country = document.querySelector('#all-countries').value;
+                const state = document.querySelector('#country-states').value;
+                
+                const userDetail = `{"address":"${address}", "city":"${city}", "postal":"${postalCode}","phone":"${phone}", "country":"${country}","state":"${state}"}`;
+                document.cookie = `userDetail=${userDetail}; expires=Wed, 31 Oct 2024 08:50:17 GMT; path=/order/confirm`;
+                window.location = '/order/confirm';     
+            })
+
+        </script>
+    </body>
+</body>
+
+</html>

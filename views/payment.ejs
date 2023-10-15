@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/assets/style.css">
+    <title>Confirm Payment</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+            <!-- Nav Bar -->
+            <div class="nav-container">
+
+                <div class="nav-hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <nav class="nav-list-container">
+
+                    <h2>Ecommerce</h2>
+
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="">Products</a></li>
+                        <li><a href="">Contacts</a></li>
+                        <li><a href="">About</a></li>
+                    </ul>
+
+                    <div class="other-menu">
+
+                        <div class="search-bar">
+                            <a href=""><i class="fa-solid fa-magnifying-glass fa-2x"></i></a>
+                        </div>
+
+                        <div class="cart-item">
+                            <a href=""><i class="fa-solid fa-cart-shopping fa-2x"></i></i></a>
+                        </div>
+
+                        <div class="user-bar">
+                            <a href="/login"><i class="fa-solid fa-user fa-2x"></i></a>
+                        </div>
+
+                    </div>
+
+                </nav>
+
+            </div>
+
+
+            <!-- Profile -->
+            <div class="user-profile">
+                <div class="main-user-profile-nav">
+                    <div class="user-profile-nav">
+
+                        <div class="user-profile-img">
+                            <img alt="">
+                        </div>
+
+                        <div class="user-profile-nav-list">
+
+                            <div class="nav-hover-wrapper admin-only">
+                                <span>Dashboard</span>
+                                <div class="dashboard-nav">
+                                    <a href="/admin/dashboard"><i class="fa-brands fa-discord"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Orders</span>
+                                <div class="order-nav">
+                                    <a href=""><i class="fa-sharp fa-solid fa-bag-shopping"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Profile</span>
+                                <div class="profile-nav">
+                                    <a href="/user"><i class="fa-solid fa-user"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Cart</span>
+                                <div class="cart-nav">
+                                    <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Logout</span>
+                                <div class="logout-nav">
+                                    <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Payment Card Info Page -->
+            <div class="shipping-page confirm-order-page">
+
+                <div class="page-pointer-section">
+                    <div class="shipping-detail-pointer">
+                        <div class="shipping-icon">
+                            <i class="fa-solid fa-truck" style="color:rgb(247, 88, 88);"></i>
+                            <div class="horizental-line" style="background-color:rgb(247, 88, 88)">
+
+                            </div>
+                        </div>
+                        <p>Shipping Details</p>
+
+                    </div>
+                    <div class="confirm-order-pointer">
+                        <div class="confirm-order-icon">
+                            <i class="fa-solid fa-square-check" style="color:rgb(247, 88, 88);"></i>
+                            <div class="horizental-line" style="background-color:rgb(247, 88, 88)">
+
+                            </div>
+                        </div>
+                        <p>Confirm Order</p>
+                    </div>
+                    <div class="payment-pointer">
+                        <div class="payment-icon">
+                            <i class="fa-solid fa-house" style="color:rgb(247, 88, 88);"></i>
+                        </div>
+                        <p>Payment</p>
+                    </div>
+                </div>
+
+                <!-- Payment Card Info Page -->
+                <div class="card-info-page">
+
+                    <div class="card-info-title">
+                        <h2>Card Info</h2>
+                    </div>
+
+                    <form action="">
+                        <div id="payment-element">
+
+                        </div>
+
+                        <div id="card-errors" role="alert"></div>
+                        <button type="submit">Pay - <span class="currency">$</span><span
+                                class="total-pay"></span></button>
+                    </form>
+
+                </div>
+
+            </div>
+
+
+
+
+            <!-- footer -->
+            <div class="footer-container">
+                <div class="other-app">
+                    <h3>DOWNLOAD OUR APP</h3>
+                    <h2>Download App for Android and IOS mobile phone</h2>
+                    <div class="footer-img-container">
+
+                        <div class="android">
+                            <img src="/img//android-app.png" alt="">
+                        </div>
+                        <div class="ios">
+                            <img src="/img/ios-app.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-center-content">
+                    <h1>ECOMMERCE</h1>
+                    <h4>High quality is our first priority</h4>
+                    <p>Copyrights 2022 © Ehtisham</p>
+                </div>
+
+                <div class="social-links">
+                    <h2>Follow Us</h2>
+                    <h3>Instagram</h3>
+                    <h3>Youtube</h3>
+                    <h3>Facebook</h3>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+
+
+            const hamburger = document.querySelector('.nav-hamburger');
+            const navList = document.querySelector('.nav-list-container');
+
+            hamburger.addEventListener('click', () => {
+                navList.classList.toggle('active');
+            })
+
+            const user = document.querySelector('.user-profile-nav');
+
+            user.addEventListener('mouseover', () => {
+                document.querySelector('.main-user-profile-nav').classList.add('active');
+            })
+            user.addEventListener('mouseout', () => {
+                document.querySelector('.main-user-profile-nav').classList.remove('active');
+            })
+
+
+            const userProfile = document.querySelector('.user-profile');
+            function homePageUser() {
+                let checkForToken = document.cookie.split(';');
+                let token = checkForToken.find(item => {
+                    if (item.includes('token')) {
+                        return true;
+                    }
+                })
+                if (token) {
+                    userProfile.style.display = 'block';
+                    fetch('/homeUser', {
+                        method: 'get',
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                    })
+                        .then((res) => res.json())
+                        .then((data) => {
+                            const adminOnly = document.querySelector('.admin-only');
+                            const userProfileImg = document.querySelector('.user-profile-img img');
+
+                            userProfileImg.src = data.user.picture;
+                            if (data.user.role === 'user') {
+                                adminOnly.style.display = 'none';
+                            }
+                            if (data.user.role === 'admin') {
+                                adminOnly.style.display = 'block';
+                            }
+                        })
+                } else {
+                    userProfile.style.display = 'none';
+                }
+            }
+            homePageUser();
+
+            // Handling currentPage Cookie Data
+
+            let cookiesData = document.cookie;
+            let cookiesArr = cookiesData.split(';');
+
+            let removeTokenCookie = cookiesArr.filter(item => {
+                if (!item.includes('token')) {
+                    return item;
+                }
+            })
+
+            // Cookie Cart Detail
+            let getCartItems = removeTokenCookie.filter(item => {
+                if (item.includes('cartCookies')) {
+                    return item;
+                }
+            }).toString().replaceAll('},', '};').split(';');
+
+
+            let removeTotalPrice = getCartItems.pop();
+            let clearCartObj = getCartItems.toString().split('=');
+            clearCartObj.shift();
+
+            let cartListItems = clearCartObj.toString().replaceAll('},', '};').split(';');
+
+            let forOrderItem = cartListItems.map(item => {
+                return JSON.parse(item);
+            }).map(item => {
+                item.price = Number(item.price);
+                item.qty = Number(item.qty);
+                item.totalAmount = Number(item.totalAmount);
+                return item;
+            });
+
+            // Cookie Order Detail
+            let getOrderDetail = removeTokenCookie.filter(item => {
+                if (item.includes('orderCookies')) {
+                    return item;
+                }
+            }).toString().replaceAll('},', '};').split(';');
+
+            let clearOrderObj = getOrderDetail.toString().split('=');
+            clearOrderObj.shift();
+
+            let subTotal;
+            let shippingCharges;
+            let gstTax;
+            let grossTotal;
+
+            let forOrderDetail = clearOrderObj.map(item => {
+                return JSON.parse(item);
+            }).map(item => {
+                item.subTotal = Number(item.subTotal);
+                item.shippingCharges = Number(item.shippingCharges);
+                item.gstTax = Number(item.gstTax);
+                item.grossTotal = Number(item.grossTotal);
+
+                subTotal = item.subTotal;
+                shippingCharges = item.shippingCharges;
+                gstTax = item.gstTax;
+                grossTotal = item.grossTotal;
+                return item;
+            });
+
+            // Cookie Shipping Info
+
+            let getShippingInfo = removeTokenCookie.filter(item => {
+                if (item.includes('userCookies')) {
+                    return item;
+                }
+            }).toString().replaceAll('},', '};').split(';');
+
+            let clearShippingObj = getShippingInfo.toString().split('=');
+            clearShippingObj.shift();
+
+            let shippingInfo;
+
+            let forShippingInfo = clearShippingObj.map(item => {
+                return JSON.parse(item);
+            }).map(item => {
+                item.postalCode = item.postal;
+                item.postalCode = Number(item.postalCode);
+                delete item.postal;
+                item.phone = Number(item.phone);
+                shippingInfo = item;
+                return item;
+            });
+
+            // Total Payment 
+            let totalPaymentDOM = document.querySelector('.total-pay');
+
+            let totalPayment = removeTotalPrice;
+
+            totalPaymentDOM.textContent = totalPayment;
+
+            // Stripe Stuff
+
+            var stripe = Stripe('pk_test_51M4zkzGXk6Ev8aFh8CU8w0IndAKKUetTmm4ClbLnLlNNt7WSCxiQp48GqkBKeJPusebru7fwXrO3fAjlR62YyToU00EfDKucDt');
+
+
+            document.querySelector('.card-info-page form button').disabled = true;
+
+            let paymentInfo;
+            fetch('/stripePayment', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    totalAmount: totalPayment
+                })
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.success) {
+
+                        const appearance = {
+                            theme: 'stripe',
+                        };
+                        const elements = stripe.elements();
+
+
+                        const style = {
+                            base: {
+                                color: '#32325d',
+                                fontFamily: 'Arial, sans-serif',
+                                fontSmoothing: 'antialiased',
+                                fontSize: '16px',
+                                '::placeholder': {
+                                    color: '#32325d',
+                                },
+                            },
+                            invalid: {
+                                fontFamily: 'Arial, sans-serif',
+                                color: '#fa755a',
+                                iconColor: '#fa755a',
+                            },
+                        }
+                        const card = elements.create("card", { style: style });
+
+                        card.mount("#payment-element");
+
+                        card.on('change', (event) => {
+                            document.querySelector('.card-info-page form button').disabled = event.empty;
+                            document.querySelector('#card-errors').textContent = event.error
+                                ? event.error.message
+                                : '';
+                        });
+
+
+                        let paymentForm = document.querySelector('.card-info-page form');
+
+                        paymentForm.addEventListener('submit', async (event) => {
+                            event.preventDefault();
+                            // setLoading(true);
+                            const result = await stripe.confirmCardPayment(data.client_secret,{
+                                payment_method: {
+                                    card: card,
+                                    billing_details: {
+                                        name: data.name,
+                                        email: data.email,
+                                        address: {
+                                            line1: shippingInfo.address,
+                                            city: shippingInfo.city,
+                                            state: shippingInfo.state,
+                                            postal_code: shippingInfo.postalCode,
+                                            
+                                        },
+                                    }
+
+                                },
+
+                            });
+
+                            if (result.error) {
+                                console.log("Error");
+                                document.querySelector('.card-info-page form button').disabled = true;
+
+                            }
+                            else {
+                                if (result.paymentIntent.status === "succeeded") {
+                                    paymentInfo = {
+                                        id: result.paymentIntent.id,
+                                        status: result.paymentIntent.status
+                                    }
+                                    fetch('/create/order', {
+                                        method:"POST",
+                                        headers:{
+                                            "Content-Type": "application/json"
+                                        },
+                                        body: JSON.stringify({
+                                            shippingInfo: shippingInfo,
+                                            orderItems: forOrderItem,
+                                            subTotal:subTotal,
+                                            gstTax:gstTax,
+                                            grossTotal:grossTotal,
+                                            paymentInfo:paymentInfo
+                                        })
+                                    })
+                                    window.location = '/success';
+                                }
+                            }
+                        })
+
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        </script>
+    </body>
+</body>
+
+</html>

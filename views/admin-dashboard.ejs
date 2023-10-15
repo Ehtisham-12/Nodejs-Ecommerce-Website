@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/assets/style.css">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Nav Bar -->
+        <div class="nav-container">
+
+            <div class="nav-hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <nav class="nav-list-container">
+
+                <h2>Ecommerce</h2>
+
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="">Products</a></li>
+                    <li><a href="">Contacts</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+
+                <div class="other-menu">
+
+                    <div class="search-bar">
+                        <a href=""><i class="fa-solid fa-magnifying-glass fa-2x"></i></a>
+                    </div>
+
+                    <div class="cart-item">
+                        <a href=""><i class="fa-solid fa-cart-shopping fa-2x"></i></a>
+                    </div>
+
+                    <div class="user-bar">
+                        <a href="/login"><i class="fa-solid fa-user fa-2x"></i></a>
+                    </div>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+        <!-- Profile -->
+        <div class="user-profile">
+            <div class="main-user-profile-nav">
+                <div class="user-profile-nav">
+
+                    <div class="user-profile-img">
+                        <img src=" <%= image %>" alt="">
+                    </div>
+
+                    <div class="user-profile-nav-list">
+
+                        <div class="nav-hover-wrapper">
+                            <span>Dashboard</span>
+                            <div class="dashboard-nav">
+                                <a href="/admin/dashboard"><i class="fa-brands fa-discord"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Orders</span>
+                            <div class="order-nav">
+                                <a href="/orders"><i class="fa-sharp fa-solid fa-bag-shopping"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Profile</span>
+                            <div class="profile-nav">
+                                <a href="/admin"><i class="fa-solid fa-user"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Cart</span>
+                            <div class="cart-nav">
+                                <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Logout</span>
+                            <div class="logout-nav">
+                                <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard-container">
+
+        <div class="dashboard-nav-section">
+            <h2>Ecommerce</h2>
+            <nav>
+                <ul>
+                    <a href=""><span><i class="fa-brands fa-discord"></i></span>
+                        <li>Dashboard</li>
+                    </a>
+                    <a href="" class="products"><span><i class="fa-brands fa-slack"></i></span>
+                        <li>Products</li>
+                    </a>
+                    <a href="" class="products-child products-dashboard"><span><i
+                                class="fa-solid fa-border-all"></i></span>
+                        <li>All</li>
+                    </a>
+                    <a href="/admin/create" class="products-child">
+                        <li>+ Create</li>
+                    </a>
+                    <a href="" class="orders-dashboard"><span><i class="fa-sharp fa-solid fa-bag-shopping"></i></span>
+                        <li>Orders</li>
+                    </a>
+                    <a href="/admin/users" class="users-dashboard"><span><i class="fa-solid fa-user"></i></span>
+                        <li>Users</li>
+                    </a>
+                    <a href="/admin/all-reviews"><span><i class="fa-solid fa-star"></i></span>
+                        <li>Reviews</li>
+                    </a>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="dashboard-main-section">
+            <!-- Dashboard Section -->
+            <div class="dashboard-section">
+                <h2 class="dashboard-heading">Dashboard</h2>
+
+                <div class="dashboard-total-amount">
+                    <h4>Total Amount</h4>
+                    <h4>$ <%=totalOrderAmount%></h4>
+                </div>
+
+                <div class="dashboard-overview">
+
+                    <div class="products-dashboard" style="background-color: rgb(166, 73, 73);">
+                        <h2>Products</h2>
+                        <h2><%= totalProduct %></h2>
+                    </div>
+
+                    <div class="orders-dashboard" style="background-color: rgb(138, 168, 91);">
+                        <h2>Orders</h2>
+                        <h2><%= totalOrder %></h2>
+                    </div>
+
+                    <div class="users-dashboard" style="background-color: rgb(35, 34, 34);">
+                        <h2>Users</h2>
+                        <h2>
+                            <%= totalUser %>
+                        </h2>
+                    </div>
+                </div>
+
+            </div>
+            
+
+        </div>
+    </div>
+
+    <script>
+        const hamburger = document.querySelector('.nav-hamburger');
+        const navList = document.querySelector('.nav-list-container');
+
+        hamburger.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        })
+
+        const user = document.querySelector('.user-profile-nav');
+
+        user.addEventListener('mouseover', () => {
+            document.querySelector('.main-user-profile-nav').classList.add('active');
+        })
+        user.addEventListener('mouseout', () => {
+            document.querySelector('.main-user-profile-nav').classList.remove('active');
+        })
+
+        // Products Child toggle
+        const productsChild = document.querySelectorAll('.products-child');
+        const products = document.querySelector('.products');
+
+        products.addEventListener('click', (e) => {
+            e.preventDefault();
+            productsChild.forEach(item => {
+                item.classList.toggle('active');
+            })
+        })
+
+        // Display All Products 
+        const productsDashboard = document.querySelectorAll('.products-dashboard');
+        const productSection = document.querySelector('.products-section');
+        const dashboardSection = document.querySelector('.dashboard-section');
+        const orderSection = document.querySelector('.orders-section');
+        const userSection = document.querySelector('.users-section');
+
+        productsDashboard.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location = '/admin/all-products'
+            })
+        })
+
+        // Display All Orders 
+        const ordersDashboard = document.querySelectorAll('.orders-dashboard');
+
+        ordersDashboard.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location = '/admin/all-orders'
+            })
+        })
+
+        // Display All Users 
+        const usersDashboard = document.querySelectorAll('.users-dashboard');
+
+        usersDashboard.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location = '/admin/users'
+            })
+        })
+
+    </script>
+</body>
+
+</html>

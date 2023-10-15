@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Product</title>
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+            <!-- Nav Bar -->
+            <div class="nav-container">
+
+                <div class="nav-hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <nav class="nav-list-container">
+
+                    <h2>Ecommerce</h2>
+
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="">Products</a></li>
+                        <li><a href="">Contacts</a></li>
+                        <li><a href="">About</a></li>
+                    </ul>
+
+                    <div class="other-menu">
+
+                        <div class="search-bar">
+                            <a href=""><i class="fa-solid fa-magnifying-glass fa-2x"></i></a>
+                        </div>
+
+                        <div class="cart-item">
+                            <a href=""><i class="fa-solid fa-cart-shopping fa-2x"></i></i></a>
+                        </div>
+
+                        <div class="user-bar">
+                            <a href="/login"><i class="fa-solid fa-user fa-2x"></i></a>
+                        </div>
+
+                    </div>
+
+                </nav>
+
+            </div>
+
+
+            <!-- Profile -->
+            <div class="user-profile">
+                <div class="main-user-profile-nav">
+                    <div class="user-profile-nav">
+
+                        <div class="user-profile-img">
+                            <img alt="">
+                        </div>
+
+                        <div class="user-profile-nav-list">
+
+                            <div class="nav-hover-wrapper admin-only">
+                                <span>Dashboard</span>
+                                <div class="dashboard-nav">
+                                    <a href="/admin/dashboard"><i class="fa-brands fa-discord"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Orders</span>
+                                <div class="order-nav">
+                                    <a href="/orders"><i class="fa-sharp fa-solid fa-bag-shopping"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Profile</span>
+                                <div class="profile-nav">
+                                    <a href="/user"><i class="fa-solid fa-user"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Cart</span>
+                                <div class="cart-nav">
+                                    <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Logout</span>
+                                <div class="logout-nav">
+                                    <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Section -->
+            <div class="cart-section">
+                <div class="cart-section-table">
+                    <table cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Products</th>
+                                <th>Quantity</th>
+                                <th class="table-header-subtotal">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                        </tbody>
+                    </table>
+                    <!-- Checkout Btn -->
+                    <div class="checkout-btn-section">
+                        <div class="checkout-btn-div">
+                            <div class="grand-total-checkout">
+                                <p>Gross Total</p>
+                                <p class="gross-total">$ <span></span></p>
+                            </div>
+                            <button class="checkout-btn">Check out</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+            <!-- footer -->
+            <div class="footer-container">
+                <div class="other-app">
+                    <h3>DOWNLOAD OUR APP</h3>
+                    <h2>Download App for Android and IOS mobile phone</h2>
+                    <div class="footer-img-container">
+
+                        <div class="android">
+                            <img src="/img//android-app.png" alt="">
+                        </div>
+                        <div class="ios">
+                            <img src="/img/ios-app.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-center-content">
+                    <h1>ECOMMERCE</h1>
+                    <h4>High quality is our first priority</h4>
+                    <p>Copyrights 2022 © Ehtisham</p>
+                </div>
+
+                <div class="social-links">
+                    <h2>Follow Us</h2>
+                    <h3>Instagram</h3>
+                    <h3>Youtube</h3>
+                    <h3>Facebook</h3>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+
+            const hamburger = document.querySelector('.nav-hamburger');
+            const navList = document.querySelector('.nav-list-container');
+
+            hamburger.addEventListener('click', () => {
+                navList.classList.toggle('active');
+            })
+
+            const user = document.querySelector('.user-profile-nav');
+
+            user.addEventListener('mouseover', () => {
+                document.querySelector('.main-user-profile-nav').classList.add('active');
+            })
+            user.addEventListener('mouseout', () => {
+                document.querySelector('.main-user-profile-nav').classList.remove('active');
+            })
+
+
+            const userProfile = document.querySelector('.user-profile');
+            function homePageUser() {
+                let checkForToken = document.cookie.split(';');
+                let token = checkForToken.find(item => {
+                    if (item.includes('token')) {
+                        return true;
+                    }
+                })
+                if (token) {
+                    userProfile.style.display = 'block';
+                    fetch('/homeUser', {
+                        method: 'get',
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                    })
+                        .then((res) => res.json())
+                        .then((data) => {
+                            const adminOnly = document.querySelector('.admin-only');
+                            const userProfileImg = document.querySelector('.user-profile-img img');
+
+                            userProfileImg.src = data.user.picture;
+                            if (data.user.role === 'user') {
+                                adminOnly.style.display = 'none';
+                            }
+                            if (data.user.role === 'admin') {
+                                adminOnly.style.display = 'block';
+                            }
+                        })
+                } else {
+                    userProfile.style.display = 'none';
+                }
+            }
+            homePageUser();
+
+
+            // Handling Cart Cookies Data
+            let element = document.cookie.split(';');
+            
+            let filterItem = element.filter(item => {
+                if (!item.includes('token')) {
+                    return item
+                }
+            })
+            
+            let cartProductArr = filterItem.map(item => {
+                let index = item.indexOf('=');
+                let getCartObj = item.slice(index + 1, item.length);
+                return getCartObj;
+            })
+            
+
+            if (cartProductArr.length > 0) {
+                let cartTableBody = cartProductArr.map(item => {
+                    let obj = JSON.parse(`${item}`);
+                    return `
+                <tr class="table-body-row" data-id="${obj.id}">
+
+                    <td class="product-table-data">
+                        <div>
+                            <img src="${obj.img}" alt="">
+                        </div>
+                        <div class="cart-product-detail">
+                            <h4 data-id="${obj.id}">${obj.name} </h4>
+                            <p>$ <span>${obj.price}</span></p>
+                            <button class="cart-remove-btn">Remove</button>
+                        </div>
+                    </td>
+
+                    <td class="total-cart-quantity">
+                        <div class="increment-n-decrement">
+                            <div class="numbers">
+                                <button class="decrement">-</button>
+                                <p class="current-number">${obj.qty}</p>
+                                <button class="increment">+</button>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="product-subtotal">$ <span>200</span></td>
+                </tr>
+                `
+                })
+
+                let tbody = document.querySelector('tbody');
+
+                tbody.innerHTML = cartTableBody.toString().replaceAll(',', ' ');
+
+            }
+
+            else {
+                let tbody = document.querySelector('tbody');
+                let checkOutSection = document.querySelector('.checkout-btn-section');
+
+                tbody.innerHTML = '<h2>No item in cart</h2>';
+                checkOutSection.style.display = 'none';
+            }
+
+            // Deleting cart cookies 
+
+            let cartRemoveBtn = document.querySelectorAll('.cart-remove-btn');
+
+            cartRemoveBtn.forEach(item => {
+                item.addEventListener('click', () => {
+                    let dataId = item.parentElement.querySelector('h4').dataset.id;
+                    
+                    document.cookie = `${dataId}=; expires=Wed, 31 Oct 2012 08:50:17 GMT; path=/cart`;
+                    window.location = '/cart';
+                })
+            })
+
+
+            // Adding Quantity for subtotal & grand total
+
+            let grossTotal = document.querySelector('.gross-total span');
+
+            const tableRow = document.querySelectorAll('.table-body-row');
+            tableRow.forEach(item => {
+                let price = item.querySelector('.cart-product-detail p span');
+                let totalQty = item.querySelector('.current-number');
+                let productSubtotal = item.querySelector('.product-subtotal span');
+                let addQuantity = item.querySelector('.increment-n-decrement');
+                let add = item.querySelector('.current-number');
+                let data = add.textContent;
+                let increaseNum = item.querySelector('.increment');
+                let decreaseNum = item.querySelector('.decrement');
+
+                add.textContent = data;
+                let priceNum = Number(price.textContent);
+                let totalQtyNum = Number(add.textContent);
+                let subtotal = priceNum * totalQtyNum;
+                productSubtotal.textContent = `${subtotal}`;
+
+                let productSubtotalNum = document.querySelectorAll('.product-subtotal span');
+
+
+                let currentNum = [];
+                productSubtotalNum.forEach(item => {
+                    let nums = Number(item.textContent);
+                    currentNum.push(nums);
+                })
+                let n = currentNum.reduce((item, num) => {
+                    return item + num;
+                }, 0)
+
+                grossTotal.textContent = `${n}`
+
+                increaseNum.addEventListener('click', () => {
+                    data++;
+                    add.textContent = data;
+                    let priceNum = Number(price.textContent);
+                    let totalQtyNum = Number(add.textContent);
+                    let subtotal = priceNum * totalQtyNum;
+                    productSubtotal.textContent = `${subtotal}`;
+                    let productSubtotalNum = document.querySelectorAll('.product-subtotal span');
+
+                    let currentNum = [];
+                    productSubtotalNum.forEach(item => {
+                        let nums = Number(item.textContent);
+                        currentNum.push(nums);
+                    })
+                    let n = currentNum.reduce((item, num) => {
+                        return item + num;
+                    }, 0)
+
+                    console.log(n);
+                    grossTotal.textContent = `${n}`
+                })
+
+                decreaseNum.addEventListener('click', () => {
+                    data--;
+                    if (data < 0) {
+                        data = 0;
+                    }
+                    add.textContent = data;
+                    let priceNum = Number(price.textContent);
+                    let totalQtyNum = Number(add.textContent);
+                    let subtotal = priceNum * totalQtyNum;
+                    productSubtotal.textContent = `${subtotal}`;
+
+                    let productSubtotalNum = document.querySelectorAll('.product-subtotal span');
+
+                    let currentNum = [];
+                    productSubtotalNum.forEach(item => {
+                        let nums = Number(item.textContent);
+                        currentNum.push(nums);
+                    })
+                    let n = currentNum.reduce((item, num) => {
+                        return item + num;
+                    }, 0)
+
+                    console.log(n);
+                    grossTotal.textContent = `${n}`
+
+                })
+
+
+            })
+
+            // Sending cart data to confirm order page through cookies
+
+            const checkOutCart = document.querySelector('.checkout-btn');
+            const allCartItem = document.querySelectorAll('.table-body-row');
+
+            checkOutCart.addEventListener('click', () => {
+                let arr = Array.from(allCartItem).map(item => {
+                    let img = item.querySelector('.product-table-data div img').src;
+                    let name = item.querySelector('.cart-product-detail h4').textContent;
+                    let price = item.querySelector('.cart-product-detail p span').textContent;
+                    let qty = item.querySelector('.current-number').textContent;
+                    let subtotal = item.querySelector('.product-subtotal span').textContent;
+                    let productId = item.dataset.id;
+                    return `{"image":"${img}","name":"${name}","price":"${price}","qty":"${qty}","totalAmount":"${subtotal}","productId":"${productId}"}`;
+                })
+                let grossTotal = document.querySelector('.gross-total span').textContent;
+                arr.push(grossTotal);
+
+                document.cookie = `cartDetail=${arr}; expires=Wed, 31 Oct 2024 08:50:17 GMT; path=/order/confirm`;
+                window.location = '/shipping';
+            })
+        </script>
+    </body>
+</body>
+
+</html>

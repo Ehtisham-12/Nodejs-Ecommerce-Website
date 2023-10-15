@@ -1,0 +1,505 @@
+<%- include('includes/head') %>
+
+<body>
+
+    <body>
+        <div class="container">
+            <!-- Nav Bar -->
+            <div class="nav-container">
+
+                <div class="nav-hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <nav class="nav-list-container">
+
+                    <h2>Ecommerce</h2>
+
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="">Products</a></li>
+                        <li><a href="">Contacts</a></li>
+                        <li><a href="">About</a></li>
+                    </ul>
+
+                    <div class="other-menu">
+
+                        <div class="search-bar">
+                            <a href=""><i class="fa-solid fa-magnifying-glass fa-2x"></i></a>
+                        </div>
+
+                        <div class="cart-item">
+                            <a href="/cart"><i class="fa-solid fa-cart-shopping fa-2x"></i></i></a>
+                        </div>
+
+                        <div class="user-bar">
+                            <a href="/login"><i class="fa-solid fa-user fa-2x"></i></a>
+                        </div>
+
+                    </div>
+
+                </nav>
+
+            </div>
+
+
+            <!-- Profile -->
+            <div class="user-profile">
+                <div class="main-user-profile-nav">
+                    <div class="user-profile-nav">
+
+                        <div class="user-profile-img">
+                            <img alt="">
+                        </div>
+
+                        <div class="user-profile-nav-list">
+
+                            <div class="nav-hover-wrapper admin-only">
+                                <span>Dashboard</span>
+                                <div class="dashboard-nav">
+                                    <a href="/admin/dashboard"><i class="fa-brands fa-discord"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Orders</span>
+                                <div class="order-nav">
+                                    <a href=""><i class="fa-sharp fa-solid fa-bag-shopping"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Profile</span>
+                                <div class="profile-nav">
+                                    <a href="/user"><i class="fa-solid fa-user"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Cart</span>
+                                <div class="cart-nav">
+                                    <a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Logout</span>
+                                <div class="logout-nav">
+                                    <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Product -->
+            <div class="single-product-page">
+
+                <div class="single-product">
+
+                    <div class="single-product-img">
+
+                        <div class="images-section">
+                            <img src="" alt="">
+                        </div>
+
+                        <div class="single-product-img-round-btn">
+                            <button><i class="fa-solid fa-circle"></i></button>
+                            <button><i class="fa-solid fa-circle"></i></button>
+                            <button><i class="fa-solid fa-circle"></i></button>
+                        </div>
+
+                    </div>
+
+                    <div class="single-product-description">
+
+                        <div class="single-product-heading">
+                            <h2>
+                                <%=product.name %>
+                            </h2>
+                            <p>Product # <span>
+                                    <%=product._id %>
+                                </span>
+                            </p>
+                        </div>
+
+                        <div class="single-product-reviews">
+                            <span>
+                                <i class="fa-solid fa-star" data-id="1"></i>
+                                <i class="fa-solid fa-star" data-id="2"></i>
+                                <i class="fa-solid fa-star" data-id="3"></i>
+                                <i class="fa-solid fa-star" data-id="4"></i>
+                                <i class="fa-solid fa-star" data-id="5"></i>
+                            </span>
+                            <span class="total-review">(Reviews <%= product.numOfReviews %>)</span>
+                        </div>
+
+                        <div class="single-product-price">
+                            <h2>PKR <%=product.price%>
+                            </h2>
+                            <div class="increment-n-decrement">
+                                <div class="numbers">
+                                    <button class="decrement">-</button>
+                                    <p class="current-number">2</p>
+                                    <button class="increment">+</button>
+                                </div>
+                                <button class="cart-btn">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <div class="single-product-status">
+                            <% if(product.stock>= 1){ %>
+
+                                <h2>Status:<span class="in-stock">InStock</span></h2>
+                                <% } else { %>
+                                    <h2>Status:<span class="out-stock">OutStock</span></h2>
+                                    <% } %>
+                        </div>
+
+                        <div class="single-product-detail">
+                            <h4>Description :</h4>
+
+                            <p>
+                                <%=product.description %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        
+
+            <!-- Single Product Reviews -->
+            <div class="single-product-reviews-section">
+
+                <h2>Reviews</h2>
+
+                <div class="single-product-all-reviews">
+
+                    <% product.reviews.forEach(item=>{ %>
+                        <div class="customer-review">
+                            <div class="img-div">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Blank_woman_placeholder.svg/315px-Blank_woman_placeholder.svg.png"
+                                    alt="" class="register-img">
+                            </div>
+                            <div class="customer-name-div">
+                                <h4>
+                                    <%= item.name %>
+                                </h4>
+                            </div>
+                            <div class="customer-star-div" data-id="<%=item.rating%>">
+                                <i class="fa-solid fa-star" data-id="1"></i>
+                                <i class="fa-solid fa-star" data-id="2"></i>
+                                <i class="fa-solid fa-star" data-id="3"></i>
+                                <i class="fa-solid fa-star" data-id="4"></i>
+                                <i class="fa-solid fa-star" data-id="5"></i>
+
+                            </div>
+                            <div class="customer-comment-div">
+                                <p>
+                                    <%= item.comment %>
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <% }) %>
+
+
+
+                </div>
+            </div>
+
+            <!-- footer -->
+            <div class="footer-container">
+                <div class="other-app">
+                    <h3>DOWNLOAD OUR APP</h3>
+                    <h2>Download App for Android and IOS mobile phone</h2>
+                    <div class="footer-img-container">
+
+                        <div class="android">
+                            <img src="/img//android-app.png" alt="">
+                        </div>
+                        <div class="ios">
+                            <img src="/img/ios-app.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-center-content">
+                    <h1>ECOMMERCE</h1>
+                    <h4>High quality is our first priority</h4>
+                    <p>Copyrights 2022 © Ehtisham</p>
+                </div>
+
+                <div class="social-links">
+                    <h2>Follow Us</h2>
+                    <h3>Instagram</h3>
+                    <h3>Youtube</h3>
+                    <h3>Facebook</h3>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+
+            const hamburger = document.querySelector('.nav-hamburger');
+            const navList = document.querySelector('.nav-list-container');
+
+            hamburger.addEventListener('click', () => {
+                navList.classList.toggle('active');
+            })
+
+            const user = document.querySelector('.user-profile-nav');
+
+            user.addEventListener('mouseover', () => {
+                document.querySelector('.main-user-profile-nav').classList.add('active');
+            })
+            user.addEventListener('mouseout', () => {
+                document.querySelector('.main-user-profile-nav').classList.remove('active');
+            })
+
+
+            const userProfile = document.querySelector('.user-profile');
+            function homePageUser() {
+                let checkForToken = document.cookie.split(';');
+                let token = checkForToken.find(item => {
+                    if (item.includes('token')) {
+                        return true;
+                    }
+                })
+                if (token) {
+                    userProfile.style.display = 'block';
+                    fetch('/homeUser', {
+                        method: 'get',
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                    })
+                        .then((res) => res.json())
+                        .then((data) => {
+                            const adminOnly = document.querySelector('.admin-only');
+                            const userProfileImg = document.querySelector('.user-profile-img img');
+
+                            userProfileImg.src = data.user.picture;
+                            if (data.user.role === 'user') {
+                                adminOnly.style.display = 'none';
+                            }
+                            if (data.user.role === 'admin') {
+                                adminOnly.style.display = 'block';
+                            }
+                        })
+                } else {
+                    userProfile.style.display = 'none';
+                }
+            }
+            homePageUser();
+
+            let data = 1;
+
+            const currentNumber = document.querySelector('.current-number');
+            currentNumber.textContent = data;
+
+            const decrement = document.querySelector('.decrement');
+            const increment = document.querySelector('.increment');
+
+            function checkStock() {
+
+                if ('<%-product.stock%>' <= 0) {
+                    data = 0;
+                    document.querySelector('.cart-btn').style.opacity = 0.5;
+                    document.querySelector('.cart-btn').style.cursor = 'default';
+           
+                    document.querySelector('.cart-btn').disabled = true
+      
+                    return currentNumber.textContent = data;
+
+                }
+            }
+
+            checkStock();
+
+            increment.addEventListener('click', () => {
+                if (data == '<%-product.stock%>') {
+                    return data = '<%-product.stock%>';
+                }
+
+
+                data = data + 1;
+                currentNumber.textContent = data;
+            })
+
+            decrement.addEventListener('click', () => {
+                if (data == 0) {
+                    return data = 0;
+                }
+                data = data - 1;
+                if (data < 1) {
+                    data = 1
+                }
+                currentNumber.textContent = data;
+            })
+
+
+            // Setting cookies for cart
+            const cartBtn = document.querySelector('.cart-btn');
+            const productName = '<%-product.name %>';
+            const unitPrice = '<%-product.price%>';
+            const productImg = '<%-product.images[0].url%>';
+            const productIds = '<%-product._id%>';
+
+            cartBtn.addEventListener('click', () => {
+                document.cookie = `${productIds}={"id":"${productIds}","name":"${productName}","price":"${unitPrice}","img":"${productImg}","qty":${currentNumber.textContent}}; expires=Wed, 31 Oct 2024 08:50:17 GMT; path=/cart`;
+            })
+
+            var getTest = `<% product.images.forEach(item => { %>
+                        <%=item.url%>,
+            <% }) %>`
+
+            let images = getTest.split(',');
+            images.pop();
+            const imgs = ['<img src="./img/product-img.jpg" alt="">', '<img src="./img/product-img-2.jpg" alt="">'];
+            const imgSection = document.querySelector('.images-section');
+
+
+
+
+
+
+            const circles = images.map((item, index) => {
+                return `<button class="circle-btn" data-id="${index}"><i class="fa-solid fa-circle"></i></button>`
+            })
+
+            const totalCircles = circles.join(',').replaceAll(',', ' ')
+            const circleDiv = document.querySelector('.single-product-img-round-btn');
+            circleDiv.innerHTML = totalCircles
+
+            const circleDivChild = document.getElementsByClassName('circle-btn');
+
+
+            const imgElement = document.querySelector('.images-section img');
+            imgElement.src = images[0];
+            circleDivChild[0].style.color = 'black';
+
+            let index = 0;
+            function change() {
+                circleDivChild[index].style.color = 'rgb(199, 199, 199)';
+                index < images.length - 1 ? index++ : index = 0;
+                imgElement.src = images[index];
+                circleDivChild[index].style.color = 'black';
+            }
+            const circleBtn = document.querySelectorAll('.circle-btn');
+
+            circleBtn.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    index = item.getAttribute('data-id');
+                    imgElement.src = images[index];
+                    colorChange(item);
+                })
+            })
+            function colorChange(btn) {
+                circleBtn.forEach(item => {
+                    if (btn.dataset.id === item.dataset.id) {
+                        btn.style.color = 'black';
+                    }
+                    if (btn.dataset.id !== item.dataset.id) {
+
+                        item.style.color = 'rgb(199, 199, 199)';
+                    }
+
+                })
+            }
+
+            var interval = setInterval(change, 4000);
+            let singleProductImg = document.querySelector('.single-product-img');
+
+            singleProductImg.addEventListener('mouseout', () => {
+                var interval = setInterval(change, 4000);
+                singleProductImg.addEventListener('mouseover', () => {
+                    clearInterval(interval);
+                })
+            })
+
+            singleProductImg.addEventListener('mouseover', () => {
+                clearInterval(interval);
+            })
+
+       
+
+            
+
+            
+
+            // Show product Overall rating
+            let avgRating = '<%-product.rating%>';
+            
+            let avgStar = document.querySelectorAll('.single-product-reviews span i');
+
+
+            avgStar.forEach(item => {
+                if (item.dataset.id <= avgRating) {
+                    item.style.color = 'orange';
+                }
+            });
+
+
+            // Show Individual Rating
+            const customerStars = document.querySelectorAll('.customer-star-div');
+            customerStars.forEach(item => {
+                if (item.dataset.id === '1') {
+                    item.innerHTML = `
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                <i class="fa-solid fa-star" ></i>
+                <i class="fa-solid fa-star" ></i>
+                <i class="fa-solid fa-star" ></i>
+                <i class="fa-solid fa-star" ></i>
+                `
+                }
+                if (item.dataset.id === '2') {
+                    item.innerHTML = `
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                <i class="fa-solid fa-star" ></i>
+                <i class="fa-solid fa-star" ></i>
+                `
+                }
+                if (item.dataset.id === '3') {
+                    item.innerHTML = `
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                <i class="fa-solid fa-star" ></i>
+                <i class="fa-solid fa-star" ></i>
+                `
+                }
+                if (item.dataset.id === '4') {
+                    item.innerHTML = `
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                <i class="fa-solid fa-star" ></i>
+                `
+                }
+                if (item.dataset.id === '5') {
+                    item.innerHTML = `
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                <i class="fa-solid fa-star" style='color:orange;'></i>
+                `
+                }
+            })
+
+        </script>
+    </body>
+</body>
+
+</html>

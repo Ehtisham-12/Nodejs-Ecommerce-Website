@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/assets/style.css">
+    <title>Admin- Edit Product</title>
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+            <!-- Nav Bar -->
+            <div class="nav-container">
+
+                <div class="nav-hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <nav class="nav-list-container">
+
+                    <h2>Ecommerce</h2>
+
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="">Products</a></li>
+                        <li><a href="">Contacts</a></li>
+                        <li><a href="">About</a></li>
+                    </ul>
+
+                    <div class="other-menu">
+
+                        <div class="search-bar">
+                            <a href=""><i class="fa-solid fa-magnifying-glass fa-2x"></i></a>
+                        </div>
+
+                        <div class="cart-item">
+                            <a href=""><i class="fa-solid fa-cart-shopping fa-2x"></i></a>
+                        </div>
+
+                        <div class="user-bar">
+                            <a href="/login"><i class="fa-solid fa-user fa-2x"></i></a>
+                        </div>
+
+                    </div>
+
+                </nav>
+
+            </div>
+
+            <!-- Profile -->
+            <div class="user-profile">
+                <div class="main-user-profile-nav">
+                    <div class="user-profile-nav">
+
+                        <div class="user-profile-img">
+                            <img src=" <%= image %>" alt="">
+                        </div>
+
+                        <div class="user-profile-nav-list">
+
+                            <div class="nav-hover-wrapper">
+                                <span>Dashboard</span>
+                                <div class="dashboard-nav">
+                                    <a href="/admin/dashboard"><i class="fa-brands fa-discord"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Orders</span>
+                                <div class="order-nav">
+                                    <a href=""><i class="fa-sharp fa-solid fa-bag-shopping"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Profile</span>
+                                <div class="profile-nav">
+                                    <a href="/user"><i class="fa-solid fa-user"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Cart</span>
+                                <div class="cart-nav">
+                                    <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Logout</span>
+                                <div class="logout-nav">
+                                    <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard -->
+        <div class="dashboard-container">
+
+            <div class="dashboard-nav-section">
+                <h2>Ecommerce</h2>
+                <nav>
+                    <ul>
+                        <a href="/admin/dashboard"><span><i class="fa-brands fa-discord"></i></span>
+                            <li>Dashboard</li>
+                        </a>
+                        <a href="" class="products"><span><i class="fa-brands fa-slack"></i></span>
+                            <li>Products</li>
+                        </a>
+                        <a href="/admin/all-products" class="products-child products-dashboard"><span><i
+                                    class="fa-solid fa-border-all"></i></span>
+                            <li>All</li>
+                        </a>
+                        <a href="/admin/create" class="products-child">
+                            <li>+ Create</li>
+                        </a>
+                        <a href="" class="orders-dashboard"><span><i
+                                    class="fa-sharp fa-solid fa-bag-shopping"></i></span>
+                            <li>Orders</li>
+                        </a>
+                        <a href="/admin/users" class="users-dashboard"><span><i class="fa-solid fa-user"></i></span>
+                            <li>Users</li>
+                        </a>
+                        <a href=""><span><i class="fa-solid fa-star"></i></span>
+                            <li>Reviews</li>
+                        </a>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Create Product -->
+
+            <div class="create-product-section">
+
+                <div class="create-product-form">
+                    <form action="/admin/product/<%=id%>" method="post" enctype="multipart/form-data">
+                        <h2>Edit Product</h2>
+                        <input type="text" placeholder="Product Name" name="name" value="<%=name%>">
+                        <input type="number" placeholder="Price" name="price" value="<%=price%>">
+                        <input type="text" placeholder="Product Description" name="description" value="<%=description%>">
+                        <select name="category" id="categoy-list">
+                            <option value="">Choose Category</option>
+                            <option value="Laptop">Laptop</option>
+                            <option value="Mobile">Mobile</option>
+                        </select>
+                        <input type="number" placeholder="Stock" name="stock" value="<%=stock%>">
+                        <label for="file-upload" class="custom-file-upload" name="images">
+                            <i class="fa fa-cloud-upload"></i> Choose Files
+                        </label>
+                        <input type="file" id="file-upload" accept="image/*" name="images" multiple onchange="loadFile()" >
+
+                        <div class="uploaded-images" name="images">
+                            <% productImg.forEach(item =>{ %>
+                                <img src ="<%= item.url %>" alt="" width="50px" id="show-img">
+                            <% }) %>
+                        </div>
+                        <button type="submit">Edit</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script>
+            const hamburger = document.querySelector('.nav-hamburger');
+            const navList = document.querySelector('.nav-list-container');
+
+            hamburger.addEventListener('click', () => {
+                navList.classList.toggle('active');
+            })
+
+            const user = document.querySelector('.user-profile-nav');
+
+            user.addEventListener('mouseover', () => {
+                document.querySelector('.main-user-profile-nav').classList.add('active');
+            })
+            user.addEventListener('mouseout', () => {
+                document.querySelector('.main-user-profile-nav').classList.remove('active');
+            })
+
+            // Products Child toggle
+            const productsChild = document.querySelectorAll('.products-child');
+            const products = document.querySelector('.products');
+
+            products.addEventListener('click', (e) => {
+                e.preventDefault();
+                productsChild.forEach(item => {
+                    item.classList.toggle('active');
+                })
+            })
+
+            // Select Option automatically in option of select
+            const categoryList = document.querySelectorAll('#categoy-list option');
+            categoryList.forEach(item => {
+                if(item.value === '<%-category%>') {
+                    item.setAttribute('selected', 'selected');
+                }
+                
+            })
+            
+
+            const loadFile =async () => {
+                const fileUpload = document.getElementById('file-upload');
+                const uploadedImages = document.querySelector('.uploaded-images');
+                const result = Object.values(fileUpload.files).map(item => {
+                   return `<img src ="${URL.createObjectURL(item)}" alt="" width="50px" id="show-img">`
+                })
+                uploadedImages.innerHTML = result.join(',').replaceAll(',', ' ');
+            }
+        </script>
+    </body>
+</body>
+
+</html>

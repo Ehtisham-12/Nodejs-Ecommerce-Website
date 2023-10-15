@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/assets/style.css">
+    <title>Confirm Order</title>
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+            <!-- Nav Bar -->
+            <div class="nav-container">
+
+                <div class="nav-hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <nav class="nav-list-container">
+
+                    <h2>Ecommerce</h2>
+
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="">Products</a></li>
+                        <li><a href="">Contacts</a></li>
+                        <li><a href="">About</a></li>
+                    </ul>
+
+                    <div class="other-menu">
+
+                        <div class="search-bar">
+                            <a href=""><i class="fa-solid fa-magnifying-glass fa-2x"></i></a>
+                        </div>
+
+                        <div class="cart-item">
+                            <a href=""><i class="fa-solid fa-cart-shopping fa-2x"></i></i></a>
+                        </div>
+
+                        <div class="user-bar">
+                            <a href="/login"><i class="fa-solid fa-user fa-2x"></i></a>
+                        </div>
+
+                    </div>
+
+                </nav>
+
+            </div>
+
+
+            <!-- Profile -->
+            <div class="user-profile">
+                <div class="main-user-profile-nav">
+                    <div class="user-profile-nav">
+
+                        <div class="user-profile-img">
+                            <img alt="">
+                        </div>
+
+                        <div class="user-profile-nav-list">
+
+                            <div class="nav-hover-wrapper admin-only">
+                                <span>Dashboard</span>
+                                <div class="dashboard-nav">
+                                    <a href="/admin/dashboard"><i class="fa-brands fa-discord"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Orders</span>
+                                <div class="order-nav">
+                                    <a href=""><i class="fa-sharp fa-solid fa-bag-shopping"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Profile</span>
+                                <div class="profile-nav">
+                                    <a href="/user"><i class="fa-solid fa-user"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Cart</span>
+                                <div class="cart-nav">
+                                    <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="nav-hover-wrapper">
+                                <span>Logout</span>
+                                <div class="logout-nav">
+                                    <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Confirm Order Page -->
+            <div class="shipping-page confirm-order-page">
+
+                <div class="page-pointer-section">
+                    <div class="shipping-detail-pointer">
+                        <div class="shipping-icon">
+                            <i class="fa-solid fa-truck" style="color:rgb(247, 88, 88);"></i>
+                            <div class="horizental-line" style="background-color:rgb(247, 88, 88)">
+
+                            </div>
+                        </div>
+                        <p>Shipping Details</p>
+
+                    </div>
+                    <div class="confirm-order-pointer">
+                        <div class="confirm-order-icon">
+                            <i class="fa-solid fa-square-check" style="color:rgb(247, 88, 88);"></i>
+                            <div class="horizental-line">
+
+                            </div>
+                        </div>
+                        <p>Confirm Order</p>
+                    </div>
+                    <div class="payment-pointer">
+                        <div class="payment-icon">
+                            <i class="fa-solid fa-house"></i>
+                        </div>
+                        <p>Payment</p>
+                    </div>
+                </div>
+
+                <!-- Confirm Order  -->
+                <div class="confirm-order-section">
+
+                    <div class="shipping-info-n-cart-items">
+
+                        <div class="shipping-info">
+                            <h2>Shipping Info</h2>
+                            <div class="ship-to-detail">
+                                <p>Name: <span></span></p>
+                                <p>Phone: <span></span></p>
+                                <p>Address: <span></span></p>
+                            </div>
+                        </div>
+
+                        <div class="cart-items-info">
+
+                            <h2>Your Cart Items:</h2>
+                            <div class="cart-items-list">
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="order-summary">
+                        <h1>Order Summary</h1>
+                        <div class="order-summery-info">
+                            <div class="subtotal">
+                                <h4>Subtotal:</h4>
+                                <p>$<span></span></p>
+                            </div>
+                            <div class="shipping-charges">
+                                <h4>Shipping Charges:</h4>
+                                <p>$<span>0</span></p>
+                            </div>
+                            <div class="gst-tax">
+                                <h4>GST:</h4>
+                                <p>$<span>0</span></p>
+                            </div>
+                        </div>
+                        <div class="total-order-summery-amount">
+                            <div class="total">
+                                <h3>Total</h3>
+                                <p>$<span></span></p>
+                            </div>
+                        </div>
+                        <div class="proceed-to-payment-btn">
+                            <button>Proceed To Payment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- footer -->
+            <div class="footer-container">
+                <div class="other-app">
+                    <h3>DOWNLOAD OUR APP</h3>
+                    <h2>Download App for Android and IOS mobile phone</h2>
+                    <div class="footer-img-container">
+
+                        <div class="android">
+                            <img src="/img//android-app.png" alt="">
+                        </div>
+                        <div class="ios">
+                            <img src="/img/ios-app.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-center-content">
+                    <h1>ECOMMERCE</h1>
+                    <h4>High quality is our first priority</h4>
+                    <p>Copyrights 2022 © Ehtisham</p>
+                </div>
+
+                <div class="social-links">
+                    <h2>Follow Us</h2>
+                    <h3>Instagram</h3>
+                    <h3>Youtube</h3>
+                    <h3>Facebook</h3>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+
+
+            const hamburger = document.querySelector('.nav-hamburger');
+            const navList = document.querySelector('.nav-list-container');
+
+            hamburger.addEventListener('click', () => {
+                navList.classList.toggle('active');
+            })
+
+            const user = document.querySelector('.user-profile-nav');
+
+            user.addEventListener('mouseover', () => {
+                document.querySelector('.main-user-profile-nav').classList.add('active');
+            })
+            user.addEventListener('mouseout', () => {
+                document.querySelector('.main-user-profile-nav').classList.remove('active');
+            })
+
+
+            const userProfile = document.querySelector('.user-profile');
+            function homePageUser() {
+                let checkForToken = document.cookie.split(';');
+                let token = checkForToken.find(item => {
+                    if (item.includes('token')) {
+                        return true;
+                    }
+                })
+                if (token) {
+                    userProfile.style.display = 'block';
+                    fetch('/homeUser', {
+                        method: 'get',
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                    })
+                        .then((res) => res.json())
+                        .then((data) => {
+                            const adminOnly = document.querySelector('.admin-only');
+                            const userProfileImg = document.querySelector('.user-profile-img img');
+
+                            userProfileImg.src = data.user.picture;
+                            if (data.user.role === 'user') {
+                                adminOnly.style.display = 'none';
+                            }
+                            if (data.user.role === 'admin') {
+                                adminOnly.style.display = 'block';
+                            }
+                        })
+                } else {
+                    userProfile.style.display = 'none';
+                }
+            }
+            homePageUser();
+
+            // Displaying User Data for order confirmation
+
+            let cookieData = document.cookie;
+            let cookieArr = cookieData.split(';');
+
+            let cartDetailArr = cookieArr.filter(item => {
+                if (item.includes('cartDetail')) {
+                    return item;
+                }
+            })
+
+
+            let cartArr = cartDetailArr.map(item => {
+                let result = item.split('=')[1];
+                return result.split('},');
+            })
+
+
+            cartArr.forEach(item => {
+
+                let productData = item.filter(kk => {
+                    if (kk.includes("{")) {
+                        return item;
+                    }
+                })
+
+                let finalObj = productData.map(item => {
+                    let totalProduct = JSON.parse(`${item}}`);
+                    return `
+                            <div class="cart-item-detail">
+                                    <div class="cart-img">
+                                        <img src="${totalProduct.image}" alt="" >
+                                    </div>
+                                    <p class="cart-item-name">
+                                        ${totalProduct.name}
+                                    </p>
+                                    <div class="cart-item-qty-n-total">
+                                        <p>${totalProduct.qty}</p>
+                                        <span>X</span>
+                                        <p>$${totalProduct.price}</p>
+                                        <span>=</span>
+                                        <p class="total-item-price">$${totalProduct.totalAmount}</p>
+                                    </div>
+                            </div>
+                        `
+                })
+                let cartItemList = document.querySelector('.cart-items-list');
+                cartItemList.innerHTML = finalObj.toString().replaceAll(',', '');
+
+                let subTotalAmount = item.filter(kk => {
+                    if (!kk.includes("{")) {
+                        return item;
+                    }
+                })
+                let subTotal = subTotalAmount.map(item => {
+                    return item;
+                }).toString();
+
+                const subTotalDOM = document.querySelector('.subtotal p span');
+                subTotalDOM.textContent = subTotal;
+            })
+
+
+            let userDetailArr = cookieArr.filter(item => {
+                if (item.includes('userDetail')) {
+                    return item;
+                }
+            })
+
+            let userArr = userDetailArr.map(item => {
+                let result = item.split('=')[1];
+                return result;
+            }).toString();
+
+            let userObj = JSON.parse(`${userArr}`);
+            let name = '<%-name%>';
+            let userDetailDisplay = `
+                                <p>Name: <span>${name}</span></p>
+                                <p>Phone: <span>${userObj.phone}</span></p>
+                                <p>Address: <span>${userObj.address}, ${userObj.city}, ${userObj.state}, ${userObj.country}</span></p>
+            `;
+
+            let shipToDetail = document.querySelector('.ship-to-detail');
+            shipToDetail.innerHTML = userDetailDisplay;
+
+
+            // Confirm Order Total Amount
+            const subTotalAmount = Number(document.querySelector('.subtotal p span').textContent);
+            const shippingAmount = Number(document.querySelector('.shipping-charges p span').textContent);
+            const gstAmount = Number(document.querySelector('.gst-tax p span').textContent);
+            const totalAmount = document.querySelector('.total p span');
+
+            totalAmount.textContent = subTotalAmount + shippingAmount + gstAmount;
+
+            // Sending Cookies to confirm payment page
+            const proceedToPaymentBtn = document.querySelector('.proceed-to-payment-btn button');
+            let currentPageCookies = document.cookie;
+            let cookieArrData = currentPageCookies.split(';');
+            let filterCookie = cookieArrData.filter(item => {
+                if (!item.includes('token')) {
+                    return item;
+                }
+            });
+
+            // For Cart Items
+            let indexOfEqualTo = filterCookie.filter(item => {
+                if (item.includes('cartDetail')) {
+                    return item;
+                }
+            }).map(item => {
+                let index = item.indexOf('=');
+                return item.slice(index + 1, item.length);
+            }).toString();
+
+
+            // For UserDetail
+            let indexOfEqualToUser = filterCookie.filter(item => {
+                if (item.includes('userDetail')) {
+                    return item;
+                }
+            }).map(item => {
+                let index = item.indexOf('=');
+                return item.slice(index + 1, item.length);
+            }).toString();
+
+
+            console.log(indexOfEqualToUser);
+            console.log(indexOfEqualTo);
+
+            let confirmPaymentCookie = `{"subTotal":"${subTotalAmount}", "shippingCharges":"${shippingAmount}","gstTax":"${gstAmount}","grossTotal":"${Number(totalAmount.textContent)}"}`
+
+            proceedToPaymentBtn.addEventListener('click', () => {
+                document.cookie = `cartCookies=${indexOfEqualTo}; expires=Wed, 31 Oct 2024 08:50:17 GMT; path=/process/payment`;
+                document.cookie = `userCookies=${indexOfEqualToUser}; expires=Wed, 31 Oct 2024 08:50:17 GMT; path=/process/payment`;
+                document.cookie = `orderCookies=${confirmPaymentCookie}; expires=Wed, 31 Oct 2024 08:50:17 GMT; path=/process/payment`;
+                window.location = '/process/payment';
+            })
+        </script>
+    </body>
+</body>
+
+</html>

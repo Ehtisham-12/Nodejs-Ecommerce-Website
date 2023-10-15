@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Nav Bar -->
+        <div class="nav-container">
+
+            <div class="nav-hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+            <nav class="nav-list-container">
+
+                <h2>Ecommerce</h2>
+
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="">Products</a></li>
+                    <li><a href="">Contacts</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+
+                <div class="other-menu">
+
+                    <div class="search-bar">
+                        <a href=""><i class="fa-solid fa-magnifying-glass fa-2x"></i></a>
+                    </div>
+
+                    <div class="cart-item">
+                        <a href=""><i class="fa-solid fa-cart-shopping fa-2x"></i></a>
+                    </div>
+
+                    <div class="user-bar">
+                        <a href="/login"><i class="fa-solid fa-user fa-2x"></i></a>
+                    </div>
+
+                </div>
+
+            </nav>
+
+        </div>
+
+        <!-- Profile -->
+        <div class="user-profile">
+            <div class="main-user-profile-nav">
+                <div class="user-profile-nav">
+
+                    <div class="user-profile-img">
+                        <img src=" <%= image %>" alt="">
+                    </div>
+
+                    <div class="user-profile-nav-list">
+
+                        <div class="nav-hover-wrapper">
+                            <span>Dashboard</span>
+                            <div class="dashboard-nav">
+                                <a href="/admin/dashboard"><i class="fa-brands fa-discord"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Orders</span>
+                            <div class="order-nav">
+                                <a href="/orders"><i class="fa-sharp fa-solid fa-bag-shopping"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Profile</span>
+                            <div class="profile-nav">
+                                <a href="/admin"><i class="fa-solid fa-user"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Cart</span>
+                            <div class="cart-nav">
+                                <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="nav-hover-wrapper">
+                            <span>Logout</span>
+                            <div class="logout-nav">
+                                <a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-content-section">
+                <h2>My Profile</h2>
+
+                <div class="profile-content-wrapper">
+                    <div class="profile-picture-n-edit-btn">
+                        <div class="user-profile-image" >
+                            <img src=" <%= image %>" alt="">
+                        </div>
+                        <div class="user-profile-edit-btn">
+                            <button>Edit Profile</button>
+                        </div>
+                    </div>
+                    <div class="profile-detail-section">
+                        <div class="full-name">
+                            <h3>Full Name</h3>
+                            <p><%= name %></p>
+                        </div>
+                        <div class="user-email">
+                            <h3>Email</h3>
+                            <p><%= email %></p>
+                        </div>
+                        <div class="user-join-date" >
+                            <h3>Joined On</h3>
+                            <p><%= joined %></p>
+                        </div>
+                        <div class="profile-detail-btn">
+                            <button>My Orders</button>
+                            <button>Change Password</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const hamburger = document.querySelector('.nav-hamburger');
+        const navList = document.querySelector('.nav-list-container');
+
+        hamburger.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        })
+
+        const user = document.querySelector('.user-profile-nav');
+
+        user.addEventListener('mouseover', () => {
+            document.querySelector('.main-user-profile-nav').classList.add('active');
+        })
+        user.addEventListener('mouseout', () => {
+            document.querySelector('.main-user-profile-nav').classList.remove('active');
+        })
+    </script>
+</body>
+</html>
